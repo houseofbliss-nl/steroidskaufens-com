@@ -122,16 +122,17 @@
       var url = '';
 
       if (form.id === 'add-to-cart-or-refresh') {
-        // Product detail page
-        var h1 = document.querySelector('h1[itemprop="name"]');
+        // Product detail page — scope within #main to avoid featured products
+        var main = document.getElementById('main') || document;
+        var h1 = main.querySelector('h1[itemprop="name"]');
         if (h1) name = h1.textContent.trim();
 
-        var priceSpan = document.querySelector('span[itemprop="price"]');
+        var priceSpan = main.querySelector('span[itemprop="price"]');
         if (priceSpan) {
           price = this._parsePrice(priceSpan.getAttribute('content') || priceSpan.textContent);
         }
 
-        var coverImg = document.querySelector('.product-cover img') || document.querySelector('.js-qv-product-cover');
+        var coverImg = main.querySelector('.product-cover img') || main.querySelector('.js-qv-product-cover');
         if (coverImg) image = coverImg.src;
 
         // Product URL from current page
