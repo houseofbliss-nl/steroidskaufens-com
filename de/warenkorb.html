@@ -2493,7 +2493,22 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     var totalEl = document.querySelector('.cart-total .value');
 
     if (count === 0) {
-      if (noItems) noItems.style.display = '';
+      container.innerHTML = '<span class="no-items">Es gibt keine Artikel mehr in Ihrem Warenkorb</span>';
+      // Reset totals
+      if (subtotalEl) {
+        var lbl = subtotalEl.querySelector('.js-subtotal');
+        var val = subtotalEl.querySelector('.value');
+        if (lbl) lbl.textContent = '0 Artikel';
+        if (val) val.textContent = formatPrice(0);
+      }
+      if (totalEl) totalEl.textContent = formatPrice(0);
+      // Restore body class & disable checkout
+      document.body.classList.add('cart-empty');
+      var chkBtn = document.querySelector('#sc-checkout-btn');
+      if (chkBtn) {
+        chkBtn.classList.add('disabled');
+        chkBtn.href = '#';
+      }
       return;
     }
 
