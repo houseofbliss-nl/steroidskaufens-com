@@ -240,7 +240,7 @@
       document.querySelectorAll('#_desktop_cart .blockcart, #_mobile_cart .blockcart').forEach(function (el) {
         el.style.cursor = 'pointer';
         el.addEventListener('click', function () {
-          window.location.href = 'warenkorb.html';
+          window.location.href = '/de/warenkorb.html';
         });
       });
     },
