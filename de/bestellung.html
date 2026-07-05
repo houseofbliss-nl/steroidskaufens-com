@@ -1620,6 +1620,23 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
               <div id="sc-confirm-items"></div>
             </div>
 
+            <div class="bg-light p-2 rounded mb-3">
+              <div style="display:flex;align-items:flex-start;gap:8px;">
+                <input type="checkbox" id="sc-terms" required style="margin-top:3px;flex-shrink:0;">
+                <label for="sc-terms" style="text-align:left;">
+                  Ich habe die <a href="content/3-nutzungsbedingungen" target="_blank">AGB</a> und die
+                  <a href="content/1-lieferung" target="_blank">Widerrufsbelehrung</a> zur Kenntnis genommen und erkl&auml;re mich damit einverstanden.
+                </label>
+              </div>
+            </div>
+
+            <div class="clearfix">
+              <button class="btn btn-secondary sc-prev-step" data-target="3">&larr; Zur&uuml;ck</button>
+              <button class="btn btn-primary btn-block float-xs-right" id="sc-place-order" disabled>
+                Jetzt bezahlen
+              </button>
+            </div>
+
             <!-- Trocador AnonPay crypto payment widget -->
             <div id="sc-trocador-container" style="display:none;">
               <hr>
@@ -1635,32 +1652,13 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
                 <div id="sc-trocador-success" style="display:none;">
                   <div class="success-icon">&#10003;</div>
                   <h5>Zahlung erfolgreich!</h5>
-                  <p>Ihre Zahlung wurde best&auml;tigt. Klicken Sie auf &quot;Bestellung aufgeben&quot;, um Ihre Bestellung abzuschlie&szlig;en.</p>
+                  <p>Ihre Zahlung wurde best&auml;tigt. Sie werden automatisch zur Best&auml;tigungsseite weitergeleitet...</p>
                 </div>
                 <p class="text-muted small mt-2 mb-0">
                   <i class="fa fa-lock" aria-hidden="true"></i>
-                  Sichere Zahlung &mdash; nach erfolgreicher Bezahlung klicken Sie unten auf &quot;Bestellung aufgeben&quot;.
+                  Sichere Zahlung per Kryptow&auml;hrung &mdash; nach erfolgreicher Bezahlung wird Ihre Bestellung automatisch abgeschlossen.
                 </p>
               </div>
-            </div>
-
-            <hr>
-
-            <div class="bg-light p-2 rounded mb-3">
-              <div style="display:flex;align-items:flex-start;gap:8px;">
-                <input type="checkbox" id="sc-terms" required style="margin-top:3px;flex-shrink:0;">
-                <label for="sc-terms" style="text-align:left;">
-                  Ich habe die <a href="content/3-nutzungsbedingungen" target="_blank">AGB</a> und die
-                  <a href="content/1-lieferung" target="_blank">Widerrufsbelehrung</a> zur Kenntnis genommen und erkl&auml;re mich damit einverstanden.
-                </label>
-              </div>
-            </div>
-
-            <div class="clearfix">
-              <button class="btn btn-secondary sc-prev-step" data-target="3">&larr; Zur&uuml;ck</button>
-              <button class="btn btn-primary btn-block float-xs-right" id="sc-place-order" disabled>
-                Bestellung aufgeben
-              </button>
             </div>
           </div>
         </div>
@@ -2895,6 +2893,16 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
       var el = document.getElementById('sc-step-' + i);
       if (el) el.style.display = i == n ? '' : 'none';
     }
+    // Reset step 4 button/widget state when revisiting
+    if (n === 4) {
+      var _btn = document.getElementById('sc-place-order');
+      if (_btn) {
+        _btn.style.display = '';
+        _btn.disabled = !(document.getElementById('sc-terms') && document.getElementById('sc-terms').checked);
+      }
+      var _cont = document.getElementById('sc-trocador-container');
+      if (_cont) _cont.style.display = 'none';
+    }
     // Persist step so refresh returns here
     saveStep(n);
     // Update progress indicator using Bootstrap-only classes
@@ -3049,33 +3057,6 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
 
           itemsEl.innerHTML = html;
 
-          // ── Trocador AnonPay widget (crypto only) ──
-          var trocadorContainer = document.getElementById('sc-trocador-container');
-          if (trocadorContainer) {
-            if (typeof paymentVerified !== 'undefined' && paymentVerified) {
-              // Payment already confirmed — show success, hide iframe
-              document.getElementById('sc-trocador-iframe').style.display = 'none';
-              trocadorContainer.style.display = 'block';
-              var success = document.getElementById('sc-trocador-success');
-              if (success) success.style.display = 'block';
-            } else {
-              var totalFiat = (subtotal + shipping).toFixed(2);
-              var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
-              var trocadorSrc = 'https://trocador.app/de/anonpay/?' +
-                'ticker_to=xmr' +
-                '&network_to=Mainnet' +
-                '&address=' + encodeURIComponent(xmrAddr) +
-                '&amount=' + totalFiat +
-                '&fiat_equiv=EUR' +
-                '&name=' + encodeURIComponent('Steroidskaufen.com') +
-                '&description=' + encodeURIComponent('Bestellung') +
-                '&bgcolor=True' +
-                '&simple_mode=True' +
-                '&buttonbgcolor=2fb5d2';
-              document.getElementById('sc-trocador-iframe').src = trocadorSrc;
-              trocadorContainer.style.display = 'block';
-            }
-          }
         }
       }
     }
@@ -3101,34 +3082,30 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     });
   });
 
-  // ── Payment verification ──
-  var paymentVerified = false;
+  // ── Trocador postMessage: payment detected → auto-send email + redirect ──
+  var paymentInProgress = false;
 
-  function updatePlaceOrderButton() {
-    if (!orderBtn) return;
-    orderBtn.disabled = !(termsCheck && termsCheck.checked) || !paymentVerified;
-  }
-
-  // Listen for Trocador AnonPay postMessage (payment completed)
   window.addEventListener('message', function(event) {
     if (event.origin !== 'https://trocador.app') return;
     console.log('ℹ️ Trocador message reçu:', event.data);
-    // Trocador envoie un message lors du paiement réussi
-    if (event.data) {
+    if (event.data && !paymentInProgress) {
       var paid = false;
       if (typeof event.data === 'string' && /payment.?completed|payment.?success|paid|confirmed/i.test(event.data)) paid = true;
       if (typeof event.data === 'object' && (event.data.type === 'payment_completed' || event.data.event === 'payment_completed' || event.data.status === 'completed')) paid = true;
       if (paid) {
-        paymentVerified = true;
+        paymentInProgress = true;
         var iframe = document.getElementById('sc-trocador-iframe');
         var success = document.getElementById('sc-trocador-success');
         if (iframe) iframe.style.display = 'none';
         if (success) success.style.display = 'block';
         var lockText = document.querySelector('#sc-trocador-container .fa-lock');
         if (lockText && lockText.parentElement) {
-          lockText.parentElement.innerHTML = '<i class="fa fa-check-circle" style="color:#27ae60;"></i> Zahlung best&auml;tigt &mdash; klicken Sie auf &quot;Bestellung aufgeben&quot;.';
+          lockText.parentElement.innerHTML = '<i class="fa fa-check-circle" style="color:#27ae60;"></i> Zahlung best&auml;tigt. Sie werden weitergeleitet...';
         }
-        updatePlaceOrderButton();
+        // Auto-send email + redirect
+        sendOrderEmail(function() {
+          window.location.href = 'bestellbestatigung.html';
+        });
       }
     }
   });
@@ -3140,30 +3117,70 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     devLink.textContent = '🔧 Test: Zahlung simulieren (Dev-Modus)';
     devLink.addEventListener('click', function(e) {
       e.preventDefault();
-      if (paymentVerified) return;
+      if (paymentInProgress) return;
       console.log('ℹ️ Dev-Modus: Zahlung simuliert');
-      paymentVerified = true;
+      paymentInProgress = true;
       var iframe = document.getElementById('sc-trocador-iframe');
       var success = document.getElementById('sc-trocador-success');
       if (iframe) iframe.style.display = 'none';
       if (success) success.style.display = 'block';
       var lockText = document.querySelector('#sc-trocador-container .fa-lock');
       if (lockText && lockText.parentElement) {
-        lockText.parentElement.innerHTML = '<i class="fa fa-check-circle" style="color:#27ae60;"></i> Zahlung (Test) best&auml;tigt.';
+        lockText.parentElement.innerHTML = '<i class="fa fa-check-circle" style="color:#27ae60;"></i> Zahlung (Test) best&auml;tigt. Weiterleitung...';
       }
-      updatePlaceOrderButton();
+      // Auto-send email + redirect
+      sendOrderEmail(function() {
+        window.location.href = 'bestellbestatigung.html';
+      });
     });
     var container = document.getElementById('sc-trocador-container');
     if (container) container.appendChild(devLink);
   }
   enableDevPaymentToggle();
 
-  // ── Terms checkbox enables order button ──
+  // ── Terms checkbox enables "Jetzt bezahlen" button ──
   var termsCheck = document.getElementById('sc-terms');
   var orderBtn = document.getElementById('sc-place-order');
   if (termsCheck && orderBtn) {
     termsCheck.addEventListener('change', function() {
-      updatePlaceOrderButton();
+      orderBtn.disabled = !termsCheck.checked;
+    });
+  }
+
+  // ── "Jetzt bezahlen" button → show Trocador widget ──
+  if (orderBtn) {
+    orderBtn.addEventListener('click', function() {
+      if (this.disabled) return;
+      // Hide button, show Trocador widget
+      this.style.display = 'none';
+      var container = document.getElementById('sc-trocador-container');
+      if (container) {
+        container.style.display = 'block';
+        // Calculate total with shipping
+        var totalFiat = Cart.getTotal();
+        var shipMethod = document.querySelector('input[name="sc-delivery"]:checked');
+        var shipping = 17;
+        if (shipMethod) {
+          var pEl = shipMethod.closest('.delivery-option').querySelector('.delivery-price');
+          if (pEl) { var _p = parseFloat(pEl.getAttribute('data-price')); if (!isNaN(_p)) shipping = _p; }
+        }
+        totalFiat = (totalFiat + shipping).toFixed(2);
+        var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
+        var iframe = document.getElementById('sc-trocador-iframe');
+        if (iframe) {
+          iframe.src = 'https://trocador.app/de/anonpay/?' +
+            'ticker_to=xmr' +
+            '&network_to=Mainnet' +
+            '&address=' + encodeURIComponent(xmrAddr) +
+            '&amount=' + totalFiat +
+            '&fiat_equiv=EUR' +
+            '&name=' + encodeURIComponent('Steroidskaufen.com') +
+            '&description=' + encodeURIComponent('Bestellung') +
+            '&bgcolor=True' +
+            '&simple_mode=True' +
+            '&buttonbgcolor=2fb5d2';
+        }
+      }
     });
   }
 
@@ -3246,20 +3263,7 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     if (callback) callback();
   }
 
-  // ── Place order ──
-  if (orderBtn) {
-    orderBtn.addEventListener('click', function() {
-      if (this.disabled) return;
-      this.disabled = true;
-      this.textContent = 'Wird gesendet...';
-      sendOrderEmail(function() {
-        window.location.href = 'bestellbestatigung.html';
-      });
-    });
-  }
-
   // ── Init ──
-  updatePlaceOrderButton();
   updateCartSummary();
 
   // Init address validation (button starts disabled)
