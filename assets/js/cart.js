@@ -297,9 +297,9 @@
     // Inject CSS
     var style = document.createElement('style');
     style.textContent =
-      '.search-ac-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;' +
-      'border:1px solid #ddd;border-top:none;z-index:9999;max-height:400px;overflow-y:auto;' +
-      'display:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);}' +
+      '.search-ac-dropdown{position:fixed;background:#fff;' +
+      'border:1px solid #ddd;z-index:99999;max-height:400px;overflow-y:auto;' +
+      'display:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);min-width:280px;}' +
       '.search-ac-dropdown a{display:flex;align-items:center;padding:10px 16px;' +
       'text-decoration:none;color:#333;border-bottom:1px solid #f0f0f0;gap:12px;font-size:14px;}' +
       '.search-ac-dropdown a:hover{background:#f4f4f7;}' +
@@ -310,15 +310,22 @@
       '.search-ac-dropdown .ac-hint:hover{background:#f0f0f0;}';
     document.head.appendChild(style);
 
-    // Create dropdown
+    // Create dropdown — attach to body for CSS isolation
     var dropdown = document.createElement('div');
     dropdown.className = 'search-ac-dropdown';
+    document.body.appendChild(dropdown);
 
-    var wrapper = searchInput.closest('form') || searchInput.parentElement;
-    if (wrapper) wrapper.style.position = 'relative';
-    (wrapper || searchInput.parentElement).appendChild(dropdown);
+    function positionDropdown() {
+      var rect = searchInput.getBoundingClientRect();
+      dropdown.style.left = rect.left + 'px';
+      dropdown.style.top = (rect.bottom) + 'px';
+      dropdown.style.width = Math.max(rect.width, 280) + 'px';
+    }
 
-    function showResults(query) {
+    function showResults(query, forceShow) {
+      // Safety: wait for product-index.js to load
+      if (!window.productIndex || !Array.isArray(window.productIndex)) return;
+
       if (!query || query.length < 2) {
         dropdown.style.display = 'none';
         return;
@@ -328,8 +335,11 @@
         return p.n.toLowerCase().indexOf(query) !== -1;
       }).slice(0, 8);
 
+      // Position the dropdown below the search field
+      positionDropdown();
+
       if (results.length === 0) {
-        dropdown.innerHTML = '<div class="ac-empty">❌ Keine Produkte gefunden</div>';
+        dropdown.innerHTML = '<div class="ac-empty">- Keine Produkte gefunden</div>';
         dropdown.style.display = 'block';
         return;
       }
@@ -361,7 +371,8 @@
 
     searchInput.addEventListener('focus', function () {
       if (dropdown.children.length > 0) {
-        showResults(searchInput.value.trim().toLowerCase());
+        positionDropdown();
+        dropdown.style.display = 'block';
       }
     });
 
