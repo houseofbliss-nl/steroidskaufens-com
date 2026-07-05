@@ -100,6 +100,7 @@
       this.enableDisabledButtons();
       this.interceptAddToCartClicks();
       this.interceptAddToCartSubmit();
+      this.fixPagination();
       this.makeCartHeaderClickable();
       this.updateUI();
     },
@@ -244,6 +245,23 @@
           window.location.href = '/de/warenkorb.html';
         });
       });
+    },
+
+    /** Restore normal navigation for pagination links (override PrestaShop AJAX) */
+    fixPagination: function () {
+      document.addEventListener(
+        'click',
+        function (e) {
+          var link = e.target.closest('.js-search-link');
+          if (!link) return;
+          if (link.classList.contains('disabled')) return;
+          if (!link.href || link.href === window.location.href) return;
+
+          e.stopPropagation();  // Empêche PrestaShop de bloquer la navigation
+          window.location.href = link.href;
+        },
+        true  // capture phase — avant le handler jQuery de PrestaShop
+      );
     },
   };
 
