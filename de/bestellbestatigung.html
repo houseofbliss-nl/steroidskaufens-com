@@ -94,13 +94,22 @@
     .pname { font-size: 14px; font-weight: 600; color: #111; line-height: 1.3; }
     .pid { font-size: 11px; color: #999; margin-top: 2px; display: block; }
 
-    /* ── Total line ── */
+    /* ── Total breakdown ── */
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .total-line-ship {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
     .total-row {
       display: flex;
       justify-content: space-between;
       padding: 10px 0 0;
-      margin-top: 8px;
-      border-top: 2px solid #1a1a2e;
       font-size: 16px;
       font-weight: 700;
       color: #111;
@@ -186,9 +195,19 @@
       </tbody>
     </table>
 
-    <div class="total-row">
-      <span>Gesamt</span>
-      <span id="sc-order-total">0,00 €</span>
+    <div id="sc-total-breakdown">
+      <div class="total-line">
+        <span>Zwischensumme</span>
+        <span id="sc-order-subtotal">0,00 €</span>
+      </div>
+      <div class="total-line total-line-ship">
+        <span id="sc-ship-name">Versand</span>
+        <span id="sc-ship-cost">0,00 €</span>
+      </div>
+      <div class="total-row">
+        <span>Gesamt</span>
+        <span id="sc-order-total">0,00 €</span>
+      </div>
     </div>
 
     <!-- ═══ PAYMENT ═══ -->
@@ -207,7 +226,7 @@
 
     <!-- ═══ BACK BUTTON ═══ -->
     <div class="btn-wrap">
-      <a href="index.html" class="btn" onclick="Cart.clear();">Zur&uuml;ck zum Shop</a>
+      <a href="index.html" class="btn" onclick="Cart.clear();localStorage.removeItem('sc_delivery_cost');localStorage.removeItem('sc_delivery_name');">Zur&uuml;ck zum Shop</a>
     </div>
 
   </div>
@@ -253,7 +272,11 @@
   function renderConfirmation() {
     var cart = Cart.getCart();
     var count = Cart.getCount();
-    var total = Cart.getTotal();
+    var subtotal = Cart.getTotal();
+    var shipping = parseFloat(localStorage.getItem('sc_delivery_cost'));
+    if (isNaN(shipping)) shipping = 0;
+    var shipName = localStorage.getItem('sc_delivery_name') || 'Versand';
+    var total = subtotal + shipping;
 
     // ── Order ID & date ──
     var now = new Date();
@@ -294,7 +317,13 @@
       }
     }
 
-    // ── Render total ──
+    // ── Render total breakdown ──
+    var subEl = document.getElementById('sc-order-subtotal');
+    if (subEl) subEl.textContent = formatPrice(subtotal);
+    var shipNameEl = document.getElementById('sc-ship-name');
+    if (shipNameEl) shipNameEl.textContent = shipName;
+    var shipCostEl = document.getElementById('sc-ship-cost');
+    if (shipCostEl) shipCostEl.textContent = formatPrice(shipping);
     var totalEl = document.getElementById('sc-order-total');
     if (totalEl) totalEl.textContent = formatPrice(total);
 

@@ -3160,10 +3160,16 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
         var totalFiat = Cart.getTotal();
         var shipMethod = document.querySelector('input[name="sc-delivery"]:checked');
         var shipping = 17;
+        var shipName = 'DPD';
         if (shipMethod) {
           var pEl = shipMethod.closest('.delivery-option').querySelector('.delivery-price');
           if (pEl) { var _p = parseFloat(pEl.getAttribute('data-price')); if (!isNaN(_p)) shipping = _p; }
+          var nameEl = shipMethod.closest('.delivery-option').querySelector('.h6');
+          if (nameEl) shipName = nameEl.textContent.trim();
         }
+        // Save shipping info for confirmation page
+        localStorage.setItem('sc_delivery_cost', shipping);
+        localStorage.setItem('sc_delivery_name', shipName);
         totalFiat = (totalFiat + shipping).toFixed(2);
         var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
         var iframe = document.getElementById('sc-trocador-iframe');
