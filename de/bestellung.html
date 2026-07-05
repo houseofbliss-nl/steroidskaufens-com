@@ -72,6 +72,88 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
 }
 </style>
 
+<style>
+/* ── Delivery options responsive ── */
+.delivery-option {
+  padding: 15px;
+}
+.sc-delivery-label {
+  cursor: pointer;
+  width: 100%;
+}
+/* Desktop: inline */
+@media (min-width: 993px) {
+  .sc-delivery-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sc-delivery-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+  .sc-delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .sc-delivery-cost {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .sc-delivery-img {
+    max-height: 35px;
+    width: auto;
+  }
+}
+/* Mobile/tablet: 2 rows, cards */
+@media (max-width: 992px) {
+  .delivery-option {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    padding: 12px 15px !important;
+  }
+  .sc-delivery-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sc-delivery-radio {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .sc-delivery-main {
+    flex: 1;
+    min-width: 0;
+  }
+  .sc-delivery-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .sc-delivery-cost {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .sc-delivery-img {
+    height: 28px;
+    width: auto;
+  }
+}
+</style>
+
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"></noscript>
 
@@ -1366,43 +1448,43 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
             <h2 class="step-title"><span class="step-number">2</span> Versandart</h2>
 
             <div class="delivery-options">
-              <div class="delivery-option" style="padding:15px">
-                <div class="row" style="width:100%">
-                  <div class="col-xs-1">
-                    <span class="custom-radio">
-                      <input type="radio" name="sc-delivery" id="sc-delivery-1" value="dpd" checked>
-                      <span></span>
-                    </span>
-                  </div>
-                  <div class="col-xs-11">
-                    <label for="sc-delivery-1" style="display:flex;flex-wrap:wrap;align-items:center;width:100%;gap:8px 12px;">
-                      <img src="../assets/img/dpd.svg" alt="DPD" class="img-fluid" style="max-height:35px;width:auto" onerror="this.style.display='none'">
-                      <span class="h6 carrier-name" style="margin-bottom:0;">DPD-Kurier</span>
+              <div class="delivery-option">
+                <label for="sc-delivery-1" class="sc-delivery-label">
+                  <span class="custom-radio sc-delivery-radio">
+                    <input type="radio" name="sc-delivery" id="sc-delivery-1" value="dpd" checked>
+                    <span></span>
+                  </span>
+                  <span class="sc-delivery-main">
+                    <span class="sc-delivery-info">
+                      <img src="../assets/img/dpd.svg" alt="DPD" class="sc-delivery-img" onerror="this.style.display='none'">
+                      <span class="h6 carrier-name">DPD-Kurier</span>
                       <small class="text-muted carrier-delay">1-2 Werktage</small>
-                      <span class="carrier-price delivery-price" style="font-weight:700;color:#2fb5d2;margin-left:auto;white-space:nowrap" data-price="17">17,00 &euro;</span>
-                      <small class="text-muted" style="white-space:nowrap">inkl. MwSt.</small>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="delivery-option" style="padding:15px">
-                <div class="row" style="width:100%">
-                  <div class="col-xs-1">
-                    <span class="custom-radio">
-                      <input type="radio" name="sc-delivery" id="sc-delivery-2" value="dhl">
-                      <span></span>
                     </span>
-                  </div>
-                  <div class="col-xs-11">
-                    <label for="sc-delivery-2" style="display:flex;flex-wrap:wrap;align-items:center;width:100%;gap:8px 12px;">
-                      <img src="../assets/img/dhl.svg" alt="DHL" class="img-fluid" style="max-height:35px;width:auto" onerror="this.style.display='none'">
-                      <span class="h6 carrier-name" style="margin-bottom:0;">DHL-Kurier</span>
+                    <span class="sc-delivery-cost">
+                      <span class="carrier-price delivery-price" data-price="17">17,00 &euro;</span>
+                      <small class="text-muted">inkl. MwSt.</small>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div class="delivery-option">
+                <label for="sc-delivery-2" class="sc-delivery-label">
+                  <span class="custom-radio sc-delivery-radio">
+                    <input type="radio" name="sc-delivery" id="sc-delivery-2" value="dhl">
+                    <span></span>
+                  </span>
+                  <span class="sc-delivery-main">
+                    <span class="sc-delivery-info">
+                      <img src="../assets/img/dhl.svg" alt="DHL" class="sc-delivery-img" onerror="this.style.display='none'">
+                      <span class="h6 carrier-name">DHL-Kurier</span>
                       <small class="text-muted carrier-delay">3-4 Werktage</small>
-                      <span class="carrier-price delivery-price" style="font-weight:700;color:#2fb5d2;margin-left:auto;white-space:nowrap" data-price="25">25,00 &euro;</span>
-                      <small class="text-muted" style="white-space:nowrap">inkl. MwSt.</small>
-                    </label>
-                  </div>
-                </div>
+                    </span>
+                    <span class="sc-delivery-cost">
+                      <span class="carrier-price delivery-price" data-price="25">25,00 &euro;</span>
+                      <small class="text-muted">inkl. MwSt.</small>
+                    </span>
+                  </span>
+                </label>
               </div>
             </div>
 
