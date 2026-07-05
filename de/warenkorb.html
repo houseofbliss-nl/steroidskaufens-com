@@ -2502,7 +2502,7 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
       html += '      </span>';
       html += '    </div>';
       html += '    <div class="product-line-grid-body col-md-4 col-xs-8">';
-      html += '      <div class="product-line-info"><a class="label" href="#">' + item.name.replace(/"/g, '&quot;') + '</a></div>';
+      html += '      <div class="product-line-info"><a class="label" href="' + (item.url || '#') + '">' + item.name.replace(/"/g, '&quot;') + '</a></div>';
       html += '      <div class="product-line-info product-price">' + formatPrice(item.price) + '</div>';
       html += '    </div>';
       html += '    <div class="product-line-grid-right col-md-6 col-xs-12">';

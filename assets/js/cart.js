@@ -24,15 +24,16 @@
   window.SteroidCart = {
     getCart: getCart,
 
-    add: function (id, name, price, image, qty) {
+    add: function (id, name, price, image, qty, url) {
       if (!id) return;
       qty = parseInt(qty, 10) || 1;
       var cart = getCart();
       if (cart[id]) {
         cart[id].qty += qty;
         if (cart[id].qty < 1) cart[id].qty = 1;
+        if (url) cart[id].url = url;
       } else {
-        cart[id] = { id: id, name: name, price: price, image: image, qty: qty };
+        cart[id] = { id: id, name: name, price: price, image: image, qty: qty, url: url || '' };
       }
       saveCart(cart);
       this.updateUI();
@@ -118,6 +119,7 @@
       var name = '';
       var price = 0;
       var image = '';
+      var url = '';
 
       if (form.id === 'add-to-cart-or-refresh') {
         // Product detail page
@@ -131,6 +133,10 @@
 
         var coverImg = document.querySelector('.product-cover img') || document.querySelector('.js-qv-product-cover');
         if (coverImg) image = coverImg.src;
+
+        // Product URL from canonical or current page
+        var canon = document.querySelector('link[rel="canonical"]');
+        url = (canon && canon.getAttribute('href')) || window.location.pathname;
       } else {
         // Category listing page — walk up to product container
         var container =
@@ -144,7 +150,11 @@
             container.querySelector('.product-title a') ||
             container.querySelector('.product-title') ||
             container.querySelector('[itemprop="name"]');
-          if (nameEl) name = nameEl.textContent.trim();
+          if (nameEl) {
+            name = nameEl.textContent.trim();
+            // Grab URL from the same anchor
+            if (nameEl.tagName === 'A') url = nameEl.getAttribute('href');
+          }
 
           var priceEl =
             container.querySelector('[itemprop="price"]') ||
@@ -162,7 +172,7 @@
         }
       }
 
-      this.add(id, name, price, image, qty);
+      this.add(id, name, price, image, qty, url);
     },
 
     /** Remove disabled from add-to-cart buttons on product pages */
