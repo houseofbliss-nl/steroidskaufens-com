@@ -2652,6 +2652,14 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   if (!Cart) return;
 
   var ADDR_KEY = 'sc_address';
+  var STEP_KEY = 'sc_current_step';
+
+  function saveStep(n) {
+    try { localStorage.setItem(STEP_KEY, String(n)); } catch (_) {}
+  }
+  function loadStep() {
+    try { return parseInt(localStorage.getItem(STEP_KEY)) || 1; } catch (_) { return 1; }
+  }
 
   function formatPrice(n) {
     return n.toFixed(2).replace('.', ',') + ' €';
@@ -2845,6 +2853,8 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
       var el = document.getElementById('sc-step-' + i);
       if (el) el.style.display = i == n ? '' : 'none';
     }
+    // Persist step so refresh returns here
+    saveStep(n);
     // Update progress indicator using Bootstrap-only classes
     document.querySelectorAll('#sc-progress-steps > span').forEach(function(sp) {
       var s = parseInt(sp.getAttribute('data-step'));
@@ -3163,7 +3173,7 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   updateAddressButtonState();
 
   // Show initial step in progress indicator
-  goToStep(1);
+  goToStep(loadStep());
 
 })();
 </script>
