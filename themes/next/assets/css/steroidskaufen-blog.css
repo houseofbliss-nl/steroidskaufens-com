@@ -1,0 +1,678 @@
+/* ================================================================
+   STEROIDSKAUFEN.COM — BLOG CONTENT FRAMEWORK
+   v5 — External stylesheet (klasy .sk-*)
+   ================================================================
+
+   INSTALACJA: Patrz SSH-INSTALL.md.
+   Plik wgrać raz przez SSH do theme directory PrestaShop, doładować
+   w tpl/header. Po wdrożeniu: w TinyMCE wklejamy tylko class="sk-..."
+   bez inline-CSS. Wszystkie wpisy używają tego stylu.
+
+   ZASADY:
+   - Wszystkie klasy prefiksowane "sk-" żeby uniknąć kolizji z theme
+   - Real responsywność przez @media (mobile-first)
+   - Bezpieczne emoji ASCII: ✓ ✗ ★ ⚠ ✉ ► ▸
+   - Brak Author/E-E-A-T box (zgodnie z preferencjami klienta)
+   ================================================================ */
+
+
+/* ─────── PALETA KOLORÓW (CSS variables, łatwa do retuszu) ─────── */
+:root {
+  --sk-primary: #1f4e79;
+  --sk-secondary: #34495e;
+  --sk-tip: #27ae60;
+  --sk-info: #2980b9;
+  --sk-dosage: #d4ac0d;
+  --sk-warning: #c0392b;
+  --sk-bg-light: #f7f9fa;
+  --sk-bg-card: #ffffff;
+  --sk-text: #2c3e50;
+  --sk-text-muted: #7f8c8d;
+  --sk-text-soft: #5d6d7e;
+  --sk-border: #e8ecef;
+  --sk-border-light: #ecf0f1;
+}
+
+
+/* ─────── 1. LEAD PARAGRAPH (drop-cap) ─────── */
+.sk-lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--sk-text);
+  margin: 0 0 24px 0;
+}
+.sk-lead::first-letter {
+  float: left;
+  font-size: 50px;
+  line-height: 0.85;
+  font-weight: 700;
+  color: var(--sk-primary);
+  margin: 6px 10px 0 0;
+  font-family: Georgia, serif;
+}
+
+
+/* ─────── 2. KEY TAKEAWAYS BOX ─────── */
+.sk-takeaways {
+  background: var(--sk-bg-light);
+  border-left: 4px solid var(--sk-primary);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+.sk-takeaways__label {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  color: var(--sk-primary);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.sk-takeaways ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--sk-text);
+  line-height: 1.7;
+}
+
+
+/* ─────── 3. SECTION HEADERS ─────── */
+.sk-h2 {
+  font-size: 24px;
+  color: var(--sk-primary);
+  margin: 36px 0 14px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--sk-border-light);
+}
+.sk-h3 {
+  font-size: 20px;
+  color: var(--sk-secondary);
+  margin: 28px 0 12px 0;
+}
+
+
+/* ─────── 4. ANSWER CAPSULE (pod H2, dla AI Overviews) ─────── */
+.sk-answer {
+  background: #eef4f9;
+  border-left: 3px solid var(--sk-info);
+  padding: 12px 16px;
+  margin: 0 0 18px 0;
+  font-style: italic;
+  color: var(--sk-secondary);
+  line-height: 1.55;
+}
+
+
+/* ─────── 5. INFO / TIP / WARNING / DOSAGE BOXES ─────── */
+.sk-box {
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 22px 0;
+}
+.sk-box__label {
+  margin: 0 0 6px 0;
+  font-weight: 700;
+  font-size: 15px;
+}
+.sk-box p:last-child {
+  margin: 0;
+  color: var(--sk-text);
+  line-height: 1.65;
+}
+
+.sk-box--info {
+  background: #eef4f9;
+  border: 1px solid #c8dceb;
+  border-left: 5px solid var(--sk-info);
+}
+.sk-box--info .sk-box__label { color: var(--sk-info); }
+
+.sk-box--tip {
+  background: #eaf7f0;
+  border: 1px solid #c1e6d2;
+  border-left: 5px solid var(--sk-tip);
+}
+.sk-box--tip .sk-box__label { color: var(--sk-tip); }
+
+.sk-box--warning {
+  background: #fdedec;
+  border: 1px solid #f5b7b1;
+  border-left: 5px solid var(--sk-warning);
+}
+.sk-box--warning .sk-box__label { color: var(--sk-warning); }
+
+.sk-box--dosage {
+  background: #fef9e7;
+  border: 1px solid #f4dca5;
+  border-left: 5px solid var(--sk-dosage);
+  padding: 18px 22px;
+}
+.sk-box--dosage .sk-box__label {
+  color: #a07d09;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+.sk-box--dosage table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.sk-box--dosage table tr:first-child { background: #f4dca5; }
+.sk-box--dosage table tr:first-child td {
+  color: #5d4d09;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+.sk-box--dosage table td {
+  padding: 9px 12px;
+  color: var(--sk-text);
+  border-bottom: 1px solid #f4dca5;
+}
+.sk-box--dosage table tr:last-child td { border-bottom: none; }
+
+
+/* ─────── 6. PULL-QUOTE / BLOCKQUOTE ─────── */
+.sk-quote {
+  border: none;
+  background: var(--sk-bg-light);
+  border-left: 5px solid var(--sk-primary);
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--sk-secondary);
+  font-style: italic;
+  border-radius: 0 8px 8px 0;
+}
+
+
+/* ─────── 7. COMPARISON TABLE ─────── */
+.sk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 24px 0;
+  border: 1px solid var(--sk-border);
+}
+.sk-table tr:first-child {
+  background: var(--sk-primary);
+}
+.sk-table tr:first-child td {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+}
+.sk-table td {
+  padding: 11px 16px;
+  color: var(--sk-text);
+  border-bottom: 1px solid var(--sk-border-light);
+}
+.sk-table tr:nth-child(even) { background: var(--sk-bg-light); }
+.sk-table tr:nth-child(odd):not(:first-child) { background: var(--sk-bg-card); }
+.sk-table tr:last-child td { border-bottom: none; }
+.sk-table .sk-table__pos { color: var(--sk-tip); font-weight: 600; }
+.sk-table .sk-table__neg { color: var(--sk-warning); font-weight: 600; }
+.sk-table .sk-table__neutral { color: var(--sk-text-muted); }
+@media (max-width: 720px) {
+  /* Tabele na mobile: scroll poziomy, bez łamania komórek */
+  .sk-table {
+    font-size: 13px;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  .sk-table td { padding: 9px 10px; }
+  .sk-box--dosage table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+}
+
+
+/* ─────── 8. STATS / KPI HIGHLIGHT (responsywne 3-col → stack) ─────── */
+.sk-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 28px 0;
+}
+.sk-stat {
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 10px;
+  padding: 22px 18px;
+  text-align: center;
+}
+.sk-stat__value {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--sk-primary);
+  line-height: 1;
+}
+.sk-stat__label {
+  margin: 8px 0 0 0;
+  color: var(--sk-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 720px) {
+  .sk-stats { grid-template-columns: 1fr; }
+}
+
+
+/* ─────── 9. PROS / CONS BOX (2-col → stack) ─────── */
+.sk-pros-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 26px 0;
+}
+.sk-pros, .sk-cons {
+  border-radius: 8px;
+  padding: 18px 22px;
+}
+.sk-pros {
+  background: #eaf7f0;
+  border: 1px solid #c1e6d2;
+}
+.sk-cons {
+  background: #fdedec;
+  border: 1px solid #f5b7b1;
+}
+.sk-pros__label, .sk-cons__label {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+.sk-pros__label { color: var(--sk-tip); }
+.sk-cons__label { color: var(--sk-warning); }
+.sk-pros ul, .sk-cons ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--sk-text);
+  line-height: 1.75;
+}
+@media (max-width: 720px) {
+  .sk-pros-cons { grid-template-columns: 1fr; }
+}
+
+
+/* ─────── 10. STEPS / PROTOCOL BOX ─────── */
+.sk-steps {
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 26px 0;
+}
+.sk-steps__title {
+  margin: 0 0 18px 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--sk-primary);
+}
+.sk-steps ol {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin: 0;
+}
+.sk-steps li {
+  counter-increment: step;
+  padding: 14px 0 14px 56px;
+  border-bottom: 1px solid var(--sk-border-light);
+  position: relative;
+  min-height: 38px;
+}
+.sk-steps li:last-child { border-bottom: none; }
+.sk-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 38px;
+  height: 38px;
+  background: var(--sk-primary);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+.sk-steps li strong {
+  color: var(--sk-text);
+  display: block;
+  margin-bottom: 4px;
+}
+.sk-steps li span { color: var(--sk-text-muted); }
+
+
+/* ─────── 11. PRODUCT CAROUSEL ───────
+   UWAGA: TinyMCE/PrestaShop często rozbija strukturę produktu na 4
+   sąsiadujące elementy w .sk-products__grid (zamiast jednego <a>):
+     1) <a class="sk-product"> z obrazkiem
+     2) <p class="sk-product__name">
+     3) <p class="sk-product__price">
+     4) <a class="sk-product"> z .sk-product__btn
+   Dlatego używamy grid-auto-flow:column + 4 wierszy — każda 4-tka
+   sąsiadów wpada w jedną pionową kartę. Działa też z poprawną
+   strukturą (1 element na produkt) gdy jest pojedynczy <a>. */
+.sk-products {
+  margin: 32px 0;
+}
+.sk-products__title {
+  margin: 0 0 16px 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--sk-primary);
+  border-bottom: 2px solid var(--sk-primary);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+/* Auto-wide columns: 1-4 produktów wpasowują się równo (190px-1fr każda),
+   od 5+ włącza się poziomy scroll z snap-align (UX karuzeli). */
+.sk-products__grid {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(190px, 1fr);
+  gap: 0;
+  border: 1px solid var(--sk-border);
+  border-radius: 10px;
+  background: var(--sk-bg-card);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* reset wszystkich bezpośrednich dzieci grid */
+.sk-products__grid > * {
+  margin: 0;
+  background: var(--sk-bg-card);
+  text-decoration: none;
+  color: var(--sk-text);
+  box-sizing: border-box;
+  transition: background 0.15s;
+}
+
+/* pionowe separatory między kartami: linia z lewej każdej karty oprócz
+   pierwszej (czyli na 1. elemencie 2., 3., 4.... karty = 5, 9, 13, 17...) */
+.sk-products__grid > .sk-product:nth-child(4n+1):not(:first-child) {
+  box-shadow: -1px 0 0 0 var(--sk-border-light);
+}
+.sk-products__grid > .sk-product:nth-child(4n+1):not(:first-child) ~ .sk-product__name,
+.sk-products__grid > .sk-product:nth-child(4n+1):not(:first-child) ~ .sk-product__price,
+.sk-products__grid > .sk-product:nth-child(4n+1):not(:first-child) ~ .sk-product:nth-child(4n) {
+  /* pusta — separator jest tylko na pierwszym elemencie karty */
+}
+
+/* snap-align na pierwszym elemencie każdej karty */
+.sk-products__grid > .sk-product:nth-child(4n+1) {
+  scroll-snap-align: start;
+}
+
+/* 1) image link — 1, 5, 9... */
+.sk-products__grid > .sk-product:nth-child(4n+1) {
+  display: block;
+  padding: 14px 14px 8px 14px;
+}
+.sk-products__grid > .sk-product:nth-child(4n+1) > a,
+.sk-products__grid > .sk-product:nth-child(4n+1) .prettyPhoto {
+  display: block;
+  text-decoration: none;
+}
+.sk-products__grid > .sk-product:nth-child(4n+1) img {
+  width: 100% !important;
+  height: 160px !important;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+  background: #fff;
+}
+
+/* 2) name — 2, 6, 10... */
+.sk-products__grid > .sk-product__name {
+  padding: 8px 14px 6px 14px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--sk-text);
+  min-height: 42px;
+  align-self: start;
+}
+
+/* 3) price — 3, 7, 11... */
+.sk-products__grid > .sk-product__price {
+  padding: 0 14px 12px 14px;
+  color: var(--sk-primary);
+  font-weight: 700;
+  font-size: 18px;
+  align-self: end;
+}
+
+/* 4) button link — 4, 8, 12... */
+.sk-products__grid > .sk-product:nth-child(4n) {
+  display: block;
+  padding: 0 14px 14px 14px;
+  align-self: end;
+}
+.sk-products__grid > .sk-product:nth-child(4n) .sk-product__btn {
+  display: inline-block;
+  color: #ffffff !important;
+  background: var(--sk-primary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.sk-products__grid > .sk-product:nth-child(4n):hover .sk-product__btn {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* hover na całą kartę: podświetl tło 4-elementowej grupy */
+.sk-products__grid > .sk-product:nth-child(4n+1):hover,
+.sk-products__grid > .sk-product:nth-child(4n+1):hover + .sk-product__name,
+.sk-products__grid > .sk-product:nth-child(4n+1):hover + .sk-product__name + .sk-product__price,
+.sk-products__grid > .sk-product:nth-child(4n+1):hover + .sk-product__name + .sk-product__price + .sk-product {
+  background: var(--sk-bg-light);
+}
+
+/* mobile: jedna kolumna, każda karta jako pełnoszerokościowy blok,
+   wyłączamy poziomy scroll (na mobile nie chcemy karuzeli — stack). */
+@media (max-width: 720px) {
+  .sk-products__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+  /* separator pionowy z desktopa znika, w zamian poziomy między kartami */
+  .sk-products__grid > .sk-product:nth-child(4n+1):not(:first-child) {
+    box-shadow: none;
+    border-top: 1px solid var(--sk-border-light);
+    margin-top: 4px;
+    padding-top: 18px;
+  }
+  .sk-products__grid > .sk-product:nth-child(4n+1) img {
+    height: 200px !important;
+  }
+}
+
+
+/* ─────── 12. CTA EMAIL CONTACT BOX ─────── */
+.sk-cta-email {
+  background: var(--sk-primary);
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  margin: 32px 0;
+  text-align: center;
+}
+/* !important wymuszenia bo theme'owa reguła .blog_description p
+   nadpisuje kolory/font-size (selektor o wyższej specyficzności) */
+.sk-cta-email__title {
+  margin: 0 0 8px 0;
+  font-size: 22px !important;
+  font-weight: 700;
+  line-height: 1.3 !important;
+  color: #ffffff !important;
+}
+.sk-cta-email__desc {
+  margin: 0 auto 22px auto;
+  line-height: 1.6 !important;
+  max-width: 560px;
+  color: #d4e2ee !important;
+  font-size: 15px !important;
+}
+.sk-cta-email__btn {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--sk-primary) !important;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  transition: transform 0.15s;
+}
+.sk-cta-email__btn:hover { transform: translateY(-1px); }
+.sk-cta-email__note {
+  margin: 14px 0 0 0;
+  font-size: 13px !important;
+  color: #a8c0d4 !important;
+}
+
+
+/* ─────── 13. CTA SUPPORT BOX (zielony pasek) ─────── */
+.sk-cta-support {
+  background: var(--sk-bg-light);
+  border: 1px solid var(--sk-border);
+  border-left: 5px solid var(--sk-tip);
+  border-radius: 8px;
+  padding: 22px 26px;
+  margin: 32px 0;
+}
+.sk-cta-support__tag {
+  margin: 0 0 4px 0;
+  color: var(--sk-tip);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+}
+.sk-cta-support__title {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--sk-text);
+  line-height: 1.35;
+}
+.sk-cta-support__desc {
+  margin: 0 0 16px 0;
+  color: var(--sk-text-soft);
+  line-height: 1.65;
+}
+.sk-cta-support__btn {
+  display: inline-block;
+  background: var(--sk-tip);
+  color: #ffffff !important;
+  padding: 11px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+.sk-cta-support__btn:hover { opacity: 0.92; }
+
+
+/* ─────── 14. FAQ — statyczne boxy z bold pytaniem ─────── */
+.sk-faq { margin: 32px 0; }
+.sk-faq__title {
+  font-size: 24px;
+  color: var(--sk-primary);
+  margin: 0 0 18px 0;
+}
+.sk-faq__item {
+  background: var(--sk-bg-card);
+  border: 1px solid var(--sk-border);
+  border-left: 3px solid var(--sk-primary);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+.sk-faq__q {
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  color: var(--sk-primary);
+  font-size: 16px;
+  line-height: 1.4;
+}
+.sk-faq__a {
+  margin: 0;
+  color: var(--sk-secondary);
+  line-height: 1.7;
+}
+
+
+/* ─────── 15. INTERNAL LINKS ─────── */
+.sk-related {
+  background: var(--sk-bg-light);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.sk-related__title {
+  margin: 0 0 14px 0;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--sk-primary);
+}
+.sk-related ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sk-related li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--sk-border);
+}
+.sk-related li:last-child { border-bottom: none; }
+.sk-related a {
+  color: var(--sk-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.sk-related a:hover { text-decoration: underline; }
+.sk-related p {
+  margin: 4px 0 0 0;
+  color: var(--sk-text-muted);
+  font-size: 14px;
+}
+
+
+/* ─────── 16. INLINE PRODUCT LINK ─────── */
+.sk-inline-link {
+  color: var(--sk-primary) !important;
+  font-weight: 600;
+  border-bottom: 1px dotted var(--sk-primary);
+  text-decoration: none;
+}
+.sk-inline-lin

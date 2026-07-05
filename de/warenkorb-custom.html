@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Warenkorb - Steroidekaufen.com</title>
+  <meta name="description" content="Ihr Warenkorb">
+  <meta name="keywords" content="">
+  <meta name="robots" content="noindex,nofollow">
+
+  <link rel="stylesheet" href="../themes/next/assets/cache/theme-bd5de0198.css" type="text/css" media="all">
+  <link rel="stylesheet" type="text/css" href="../themes/next/assets/css/steroidskaufen-blog.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/vnd.microsoft.icon" href="../img/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
+
+  <style>
+    /*** Cart page overrides ***/
+    .sc-cart-wrapper {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .sc-cart-wrapper h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    .sc-cart-empty {
+      text-align: center;
+      padding: 80px 20px;
+      color: #888;
+      font-size: 18px;
+    }
+    .sc-cart-empty a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #2fb5d2;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .sc-cart-empty a:hover {
+      background: #259bb5;
+    }
+    .sc-cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    .sc-cart-table th {
+      text-align: left;
+      padding: 12px 15px;
+      background: #f6f6f6;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #555;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .sc-cart-table td {
+      padding: 18px 15px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+    .sc-cart-table .sc-img {
+      width: 70px;
+      height: auto;
+      border-radius: 3px;
+    }
+    .sc-cart-table .sc-prod-name {
+      font-weight: 600;
+      color: #333;
+    }
+    .sc-cart-table .sc-prod-name a {
+      color: #333;
+      text-decoration: none;
+    }
+    .sc-cart-table .sc-prod-name a:hover {
+      color: #2fb5d2;
+    }
+    .sc-cart-table .sc-qty-input {
+      width: 60px;
+      padding: 6px 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .sc-cart-table .sc-remove {
+      background: none;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 4px 8px;
+    }
+    .sc-cart-table .sc-remove:hover {
+      color: #c0392b;
+    }
+    .sc-cart-totals {
+      background: #fafafa;
+      border: 1px solid #e8e8e8;
+      border-radius: 6px;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+    }
+    .sc-cart-totals .sc-total-row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 15px;
+    }
+    .sc-cart-totals .sc-total-row.sc-grand-total {
+      font-size: 20px;
+      font-weight: 700;
+      border-top: 2px solid #ddd;
+      padding-top: 15px;
+      margin-top: 10px;
+    }
+    .sc-cart-actions {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .sc-cart-actions .btn {
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      -webkit-transition: background 0.2s;
+      transition: background 0.2s;
+    }
+    .sc-btn-continue {
+      background: #6c757d;
+      color: #fff;
+    }
+    .sc-btn-continue:hover {
+      background: #5a6268;
+    }
+    .sc-btn-clear {
+      background: #fff;
+      color: #e74c3c;
+      border: 1px solid #e74c3c;
+    }
+    .sc-btn-clear:hover {
+      background: #e74c3c;
+      color: #fff;
+    }
+    .sc-btn-checkout {
+      background: #4CAF50;
+      color: #fff;
+    }
+    .sc-btn-checkout:hover {
+      background: #45a049;
+    }
+    .sc-btn-update {
+      background: #2fb5d2;
+      color: #fff;
+      padding: 6px 14px;
+      font-size: 13px;
+    }
+    .sc-btn-update:hover {
+      background: #259bb5;
+    }
+    .sc-loading {
+      text-align: center;
+      padding: 60px;
+      color: #999;
+    }
+    @media (max-width: 768px) {
+      .sc-cart-table th,
+      .sc-cart-table td {
+        padding: 10px 8px;
+        font-size: 13px;
+      }
+      .sc-cart-table .sc-img {
+        width: 50px;
+      }
+      .sc-cart-actions {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+      .sc-cart-actions .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .sc-cart-table thead {
+        display: none;
+      }
+      .sc-cart-table tr {
+        display: block;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+      }
+      .sc-cart-table td {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        border: none;
+        padding: 6px 8px;
+      }
+      .sc-cart-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #666;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header id="header">
+      <nav class="header-nav">
+        <div class="container">
+          <div class="header-wrapper hidden-sm-down">
+            <div class="row">
+              <div class="col-md-6 col-xs-12 left-nav"></div>
+              <div class="col-md-6 right-nav">
+                <div id="_desktop_user_info">
+                  <div class="user-info">
+                    <a href="anmeldungfd9a.html" title="Anmelden" rel="nofollow">
+                      <i class="material-icons">&#xE7FF;</i>
+                      <span class="hidden-sm-down">Anmelden</span>
+                    </a>
+                  </div>
+                </div>
+                <div id="_desktop_language_selector">
+                  <div class="language-selector-wrapper">
+                    <div class="language-selector dropdown js-dropdown">
+                      <button data-toggle="dropdown" class="hidden-sm-down btn-unstyle" aria-haspopup="true" aria-expanded="false" aria-label="Dropdown Sprachen">
+                        <span class="expand-more"><img src="../img/l/2.jpg" alt="de" width="16" height="11" /> Deutsch</span>
+                        <i class="fa fa-angle-down expand-more"></i>
+                      </button>
+                      <ul class="dropdown-menu hidden-sm-down">
+                        <li class="current"><a href="warenkorb.html" class="dropdown-item" data-iso-code="de">Deutsch</a></li>
+                        <li><a href="#" class="dropdown-item" data-iso-code="es">Español</a></li>
+                        <li><a href="#" class="dropdown-item" data-iso-code="nl">Nederlands</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="hidden-md-up text-sm-center mobile">
+              <div class="float-xs-left" id="menu-icon">
+                <i class="material-icons d-inline">&#xE5D2;</i>
+              </div>
+              <div class="float-xs-right" id="_mobile_cart"></div>
+              <div class="float-xs-right" id="_mobile_user_info"></div>
+              <div class="top-logo" id="_mobile_logo"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div id="_desktop_logo">
+              <a href="index.html">
+                <img class="logo" src="../img/steroide-kaufen-logo-1637164827.jpg" alt="steroide kaufen" width="500" height="80">
+              </a>
+            </div>
+            <div id="_desktop_cart">
+              <div class="blockcart cart-preview inactive" data-refresh-url="">
+                <div class="header">
+                  <span class="shopping-basket"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                  <span class="cart-products-count hidden-sm-down">0</span>
+                  <span class="cart-products-count hidden-md-up">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="wrapper" class="container">
+      <div class="row">
+        <div id="content-wrapper" class="col-md-12">
+          <section id="main">
+            <div class="sc-cart-wrapper">
+              <h1>Warenkorb</h1>
+              <div id="sc-cart-content">
+                <div class="sc-loading">
+                  <i class="fa fa-spinner fa-spin fa-2x"></i>
+                  <p style="margin-top:12px">Warenkorb wird geladen...</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div class="footer-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center" style="padding: 30px 0; color: #777; font-size: 13px;">
+              &copy; 2026 Steroidekaufen.com &mdash; Alle Rechte vorbehalten.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script async type="text/javascript" src="../themes/next/assets/cache/bottom-a316df197.js"></script>
+  <script src="../assets/js/cart.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var Cart = window.SteroidCart;
+      if (!Cart) {
+        document.getElementById('sc-cart-content').innerHTML =
+          '<div class="sc-cart-empty">Fehler: Cart-System nicht geladen.</div>';
+        return;
+      }
+
+      function formatPrice(amount) {
+        return String(amount.toFixed(2)).replace('.', ',') + ' €';
+      }
+
+      function renderCart() {
+        var cart = Cart.getCart();
+        var container = document.getElementById('sc-cart-content');
+        var count = Cart.getCount();
+
+        if (count === 0) {
+          container.innerHTML =
+            '<div class="sc-cart-empty">' +
+            '  <i class="fa fa-shopping-cart" style="font-size: 48px; color: #ddd; margin-bottom: 20px;"></i>' +
+            '  <p>Ihr Warenkorb ist leer.</p>' +
+            '  <a href="index.html">Weiter einkaufen</a>' +
+            '</div>';
+          return;
+        }
+
+        var html = '';
+        html += '<table class="sc-cart-table">';
+        html += '  <thead><tr>' +
+          '    <th>Produkt</th>' +
+          '    <th>Bezeichnung</th>' +
+          '    <th>Preis</th>' +
+          '    <th>Menge</th>' +
+          '    <th>Gesamt</th>' +
+          '    <th></th>' +
+          '  </tr></thead><tbody>';
+
+        var subtotal = 0;
+        var ids = Object.keys(cart);
+
+        ids.forEach(function (id) {
+          var item = cart[id];
+          var lineTotal = item.price * item.qty;
+          subtotal += lineTotal;
+
+          var imageHtml = item.image
+            ? '<img class="sc-img" src="' + item.image.replace(/\\/g, '/') + '" alt="' + escapeHtml(item.name) + '">'
+            : '<div style="width:70px;height:70px;background:#eee;border-radius:3px;"></div>';
+
+          html += '<tr data-id="' + id + '">';
+          html += '  <td data-label="">' + imageHtml + '</td>';
+          html += '  <td data-label="Bezeichnung"><span class="sc-prod-name">' + escapeHtml(item.name) + '</span></td>';
+          html += '  <td data-label="Preis">' + formatPrice(item.price) + '</td>';
+          html += '  <td data-label="Menge">' +
+            '    <input type="number" class="sc-qty-input" value="' + item.qty + '" min="1" data-id="' + id + '">' +
+            '    <button class="btn btn-primary sc-btn-update" data-id="' + id + '" style="margin-left:6px;">' +
+            '      <i class="fa fa-refresh"></i>' +
+            '    </button>' +
+            '  </td>';
+          html += '  <td data-label="Gesamt" class="sc-line-total">' + formatPrice(lineTotal) + '</td>';
+          html += '  <td data-label="">' +
+            '    <button class="sc-remove" data-id="' + id + '" title="Entfernen">&times;</button>' +
+            '  </td>';
+          html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+
+        // Totals
+        var shipping = subtotal >= 150 ? 0 : 17;
+        var total = subtotal + shipping;
+
+        html += '<div class="sc-cart-totals">';
+        html += '  <div class="sc-total-row">' +
+          '    <span>Zwischensumme</span>' +
+          '    <span>' + formatPrice(subtotal) + '</span>' +
+          '  </div>';
+        if (shipping > 0) {
+          html += '  <div class="sc-total-row">' +
+            '    <span>Versand (DPD/DHL)</span>' +
+            '    <span>' + formatPrice(shipping) + '</span>' +
+            '  </div>';
+          html += '  <div class="sc-total-row" style="font-size:13px;color:#999;">' +
+            '    <span>Versandkostenfrei ab 150 €</span>' +
+            '    <span></span>' +
+            '  </div>';
+        } else {
+          html += '  <div class="sc-total-row">' +
+            '    <span>Versand</span>' +
+            '    <span style="color:#4CAF50;font-weight:600;">Kostenlos</span>' +
+            '  </div>';
+        }
+        html += '  <div class="sc-total-row sc-grand-total">' +
+          '    <span>Gesamt</span>' +
+          '    <span>' + formatPrice(total) + '</span>' +
+          '  </div>';
+        html += '</div>';
+
+        // Actions
+        html += '<div class="sc-cart-actions">';
+        html += '  <a href="index.html" class="btn sc-btn-continue"><i class="fa fa-arrow-left"></i> Weiter einkaufen</a>';
+        html += '  <div>';
+        html += '    <button class="btn sc-btn-clear" id="sc-clear-cart">Warenkorb leeren</button>';
+        html += '    <button class="btn sc-btn-checkout" id="sc-checkout-btn" style="margin-left:8px;">Zur Kasse <i class="fa fa-arrow-right"></i></button>';
+        html += '  </div>';
+        html += '</div>';
+
+        container.innerHTML = html;
+
+        // ── Event binding ──
+
+        // Remove
+        container.querySelectorAll('.sc-remove').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            Cart.remove(this.getAttribute('data-id'));
+            renderCart();
+          });
+        });
+
+        // Update qty
+        container.querySelectorAll('.sc-btn-update').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var id = this.getAttribute('data-id');
+            var input = container.querySelector('.sc-qty-input[data-id="' + id + '"]');
+            var val = parseInt(input.value, 10) || 1;
+            if (val < 1) val = 1;
+            Cart.updateQty(id, val);
+            renderCart();
+          });
+        });
+
+        // Enter key on qty input
+        container.querySelectorAll('.sc-qty-input').forEach(function (input) {
+          input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              var id = this.getAttribute('data-id');
+              var val = parseInt(this.value, 10) || 1;
+              if (val < 1) val = 1;
+              Cart.updateQty(id, val);
+              renderCart();
+            }
+          });
+        });
+
+        // Clear
+        var clearBtn = document.getElementById('sc-clear-cart');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', function () {
+            if (confirm('Warenkorb wirklich leeren?')) {
+              Cart.clear();
+              renderCart();
+            }
+          });
+        }
+
+        // Checkout
+        var checkoutBtn = document.getElementById('sc-checkout-btn');
+        if (checkoutBtn) {
+          checkoutBtn.addEventListener('click', function () {
+            alert('Kasse kommt demnächst! (Trocador-Integration)');
+          });
+        }
+      }
+
+      function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str || ''));
+        return div.innerHTML;
+      }
+
+      // Wait for Cart to be ready
+      function waitForCart() {
+        if (window.SteroidCart && typeof window.SteroidCart.getCart === 'function') {
+          renderCart();
+        } else {
+          setTimeout(waitForCart, 100);
+        }
+      }
+
+      // Initial render
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', waitForCart);
+      } else {
+        waitForCart();
+      }
+    })();
+  </script>
+
+</body>
+</html>
