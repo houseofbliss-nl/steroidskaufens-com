@@ -168,6 +168,43 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
     padding: 10px 8px !important;
   }
 }
+/* ── Trocador payment success overlay ── */
+#sc-trocador-success {
+  text-align: center;
+  padding: 24px 20px;
+}
+#sc-trocador-success .success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #27ae60;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+#sc-trocador-success h5 {
+  color: #27ae60;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+#sc-trocador-success p {
+  color: #555;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+#sc-trocador-dev-toggle {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+  margin-top: 8px;
+  text-decoration: underline;
+}
 </style>
 
     <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -1595,6 +1632,11 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
                 <div style="text-align:center;">
                   <iframe id="sc-trocador-iframe" src="" height="420" scrolling="no" style="border:0;width:100%;border-radius:8px;box-shadow:0 1px 8px rgba(0,0,0,0.08);"></iframe>
                 </div>
+                <div id="sc-trocador-success" style="display:none;">
+                  <div class="success-icon">&#10003;</div>
+                  <h5>Zahlung erfolgreich!</h5>
+                  <p>Ihre Zahlung wurde best&auml;tigt. Klicken Sie auf &quot;Bestellung aufgeben&quot;, um Ihre Bestellung abzuschlie&szlig;en.</p>
+                </div>
                 <p class="text-muted small mt-2 mb-0">
                   <i class="fa fa-lock" aria-hidden="true"></i>
                   Sichere Zahlung &mdash; nach erfolgreicher Bezahlung klicken Sie unten auf &quot;Bestellung aufgeben&quot;.
@@ -3010,21 +3052,29 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
           // ── Trocador AnonPay widget (crypto only) ──
           var trocadorContainer = document.getElementById('sc-trocador-container');
           if (trocadorContainer) {
-            var totalFiat = (subtotal + shipping).toFixed(2);
-            var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
-            var trocadorSrc = 'https://trocador.app/de/anonpay/?' +
-              'ticker_to=xmr' +
-              '&network_to=Mainnet' +
-              '&address=' + encodeURIComponent(xmrAddr) +
-              '&amount=' + totalFiat +
-              '&fiat_equiv=EUR' +
-              '&name=' + encodeURIComponent('Steroidskaufen.com') +
-              '&description=' + encodeURIComponent('Bestellung') +
-              '&bgcolor=True' +
-              '&simple_mode=True' +
-              '&buttonbgcolor=2fb5d2';
-            document.getElementById('sc-trocador-iframe').src = trocadorSrc;
-            trocadorContainer.style.display = 'block';
+            if (typeof paymentVerified !== 'undefined' && paymentVerified) {
+              // Payment already confirmed — show success, hide iframe
+              document.getElementById('sc-trocador-iframe').style.display = 'none';
+              trocadorContainer.style.display = 'block';
+              var success = document.getElementById('sc-trocador-success');
+              if (success) success.style.display = 'block';
+            } else {
+              var totalFiat = (subtotal + shipping).toFixed(2);
+              var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
+              var trocadorSrc = 'https://trocador.app/de/anonpay/?' +
+                'ticker_to=xmr' +
+                '&network_to=Mainnet' +
+                '&address=' + encodeURIComponent(xmrAddr) +
+                '&amount=' + totalFiat +
+                '&fiat_equiv=EUR' +
+                '&name=' + encodeURIComponent('Steroidskaufen.com') +
+                '&description=' + encodeURIComponent('Bestellung') +
+                '&bgcolor=True' +
+                '&simple_mode=True' +
+                '&buttonbgcolor=2fb5d2';
+              document.getElementById('sc-trocador-iframe').src = trocadorSrc;
+              trocadorContainer.style.display = 'block';
+            }
           }
         }
       }
@@ -3051,12 +3101,69 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     });
   });
 
+  // ── Payment verification ──
+  var paymentVerified = false;
+
+  function updatePlaceOrderButton() {
+    if (!orderBtn) return;
+    orderBtn.disabled = !(termsCheck && termsCheck.checked) || !paymentVerified;
+  }
+
+  // Listen for Trocador AnonPay postMessage (payment completed)
+  window.addEventListener('message', function(event) {
+    if (event.origin !== 'https://trocador.app') return;
+    console.log('ℹ️ Trocador message reçu:', event.data);
+    // Trocador envoie un message lors du paiement réussi
+    if (event.data) {
+      var paid = false;
+      if (typeof event.data === 'string' && /payment.?completed|payment.?success|paid|confirmed/i.test(event.data)) paid = true;
+      if (typeof event.data === 'object' && (event.data.type === 'payment_completed' || event.data.event === 'payment_completed' || event.data.status === 'completed')) paid = true;
+      if (paid) {
+        paymentVerified = true;
+        var iframe = document.getElementById('sc-trocador-iframe');
+        var success = document.getElementById('sc-trocador-success');
+        if (iframe) iframe.style.display = 'none';
+        if (success) success.style.display = 'block';
+        var lockText = document.querySelector('#sc-trocador-container .fa-lock');
+        if (lockText && lockText.parentElement) {
+          lockText.parentElement.innerHTML = '<i class="fa fa-check-circle" style="color:#27ae60;"></i> Zahlung best&auml;tigt &mdash; klicken Sie auf &quot;Bestellung aufgeben&quot;.';
+        }
+        updatePlaceOrderButton();
+      }
+    }
+  });
+
+  // Dev mode: simulate payment (works on localhost or via toggle)
+  function enableDevPaymentToggle() {
+    var devLink = document.createElement('a');
+    devLink.id = 'sc-trocador-dev-toggle';
+    devLink.textContent = '🔧 Test: Zahlung simulieren (Dev-Modus)';
+    devLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (paymentVerified) return;
+      console.log('ℹ️ Dev-Modus: Zahlung simuliert');
+      paymentVerified = true;
+      var iframe = document.getElementById('sc-trocador-iframe');
+      var success = document.getElementById('sc-trocador-success');
+      if (iframe) iframe.style.display = 'none';
+      if (success) success.style.display = 'block';
+      var lockText = document.querySelector('#sc-trocador-container .fa-lock');
+      if (lockText && lockText.parentElement) {
+        lockText.parentElement.innerHTML = '<i class="fa fa-check-circle" style="color:#27ae60;"></i> Zahlung (Test) best&auml;tigt.';
+      }
+      updatePlaceOrderButton();
+    });
+    var container = document.getElementById('sc-trocador-container');
+    if (container) container.appendChild(devLink);
+  }
+  enableDevPaymentToggle();
+
   // ── Terms checkbox enables order button ──
   var termsCheck = document.getElementById('sc-terms');
   var orderBtn = document.getElementById('sc-place-order');
   if (termsCheck && orderBtn) {
     termsCheck.addEventListener('change', function() {
-      orderBtn.disabled = !this.checked;
+      updatePlaceOrderButton();
     });
   }
 
@@ -3152,6 +3259,7 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   }
 
   // ── Init ──
+  updatePlaceOrderButton();
   updateCartSummary();
 
   // Init address validation (button starts disabled)
