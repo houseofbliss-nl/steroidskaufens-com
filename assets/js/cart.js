@@ -270,8 +270,108 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       window.SteroidCart.init();
+      loadProductIndex();
     });
   } else {
     window.SteroidCart.init();
+    loadProductIndex();
+  }
+
+  // ── Search autocomplete ─────────────────────────────────────
+
+  function loadProductIndex() {
+    var script = document.createElement('script');
+    script.src = '../assets/js/product-index.js';
+    script.onload = initSearchAutocomplete;
+    document.head.appendChild(script);
+  }
+
+  function initSearchAutocomplete() {
+    var searchInput = document.querySelector(
+      '#search_widget input[name="s"], ' +
+      '.ht-search-widget input[name="s"], ' +
+      '.search-widget input[name="s"]'
+    );
+    if (!searchInput) return;
+
+    // Inject CSS
+    var style = document.createElement('style');
+    style.textContent =
+      '.search-ac-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;' +
+      'border:1px solid #ddd;border-top:none;z-index:9999;max-height:400px;overflow-y:auto;' +
+      'display:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);}' +
+      '.search-ac-dropdown a{display:flex;align-items:center;padding:10px 16px;' +
+      'text-decoration:none;color:#333;border-bottom:1px solid #f0f0f0;gap:12px;font-size:14px;}' +
+      '.search-ac-dropdown a:hover{background:#f4f4f7;}' +
+      '.search-ac-dropdown .ac-price{font-weight:600;color:#27ae60;white-space:nowrap;font-size:14px;}' +
+      '.search-ac-dropdown .ac-empty{padding:12px 16px;color:#999;font-size:14px;}' +
+      '.search-ac-dropdown .ac-hint{display:block;padding:8px 16px;text-align:center;' +
+      'font-size:12px;color:#999;text-decoration:none;background:#fafafa;}' +
+      '.search-ac-dropdown .ac-hint:hover{background:#f0f0f0;}';
+    document.head.appendChild(style);
+
+    // Create dropdown
+    var dropdown = document.createElement('div');
+    dropdown.className = 'search-ac-dropdown';
+
+    var wrapper = searchInput.closest('form') || searchInput.parentElement;
+    if (wrapper) wrapper.style.position = 'relative';
+    (wrapper || searchInput.parentElement).appendChild(dropdown);
+
+    function showResults(query) {
+      if (!query || query.length < 2) {
+        dropdown.style.display = 'none';
+        return;
+      }
+
+      var results = window.productIndex.filter(function (p) {
+        return p.n.toLowerCase().indexOf(query) !== -1;
+      }).slice(0, 8);
+
+      if (results.length === 0) {
+        dropdown.innerHTML = '<div class="ac-empty">❌ Keine Produkte gefunden</div>';
+        dropdown.style.display = 'block';
+        return;
+      }
+
+      dropdown.innerHTML = results.map(function (p) {
+        var priceStr = p.p
+          ? parseFloat(p.p).toFixed(2).replace('.', ',') + ' €'
+          : '';
+        var image = p.i
+          ? '<img src="' + p.i + '" alt="" style="width:36px;height:44px;object-fit:cover;border-radius:4px;flex-shrink:0;">'
+          : '';
+        return '<a href="' + p.u + '">' +
+          image +
+          '<span style="flex:1;">' + p.n + '</span>' +
+          (priceStr ? '<span class="ac-price">' + priceStr + '</span>' : '') +
+          '</a>';
+      }).join('');
+
+      dropdown.style.display = 'block';
+    }
+
+    searchInput.addEventListener('input', function () {
+      showResults(this.value.trim().toLowerCase());
+    });
+
+    searchInput.addEventListener('blur', function () {
+      setTimeout(function () { dropdown.style.display = 'none'; }, 200);
+    });
+
+    searchInput.addEventListener('focus', function () {
+      if (dropdown.children.length > 0) {
+        showResults(searchInput.value.trim().toLowerCase());
+      }
+    });
+
+    // Prevent form submit (Enter key) — just show results
+    var form = searchInput.closest('form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        showResults(searchInput.value.trim().toLowerCase());
+      });
+    }
   }
 })();
