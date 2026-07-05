@@ -189,73 +189,33 @@
       padding: 60px;
       color: #999;
     }
-    /* ── Tablette (768–1024 px) ── */
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .sc-cart-wrapper {
-        padding: 0 12px;
-      }
+    @media (max-width: 768px) {
       .sc-cart-table th,
       .sc-cart-table td {
-        padding: 8px 6px;
-        font-size: 12px;
+        padding: 10px 8px;
+        font-size: 13px;
       }
       .sc-cart-table .sc-img {
-        width: 45px;
-      }
-      .sc-cart-table .sc-qty-input {
-        width: 48px;
-        padding: 4px 6px;
-        font-size: 13px;
-      }
-      .sc-cart-table .sc-remove {
-        font-size: 16px;
-        padding: 2px 6px;
-      }
-      .sc-cart-totals {
-        padding: 18px 20px;
-      }
-      .sc-cart-totals .sc-total-row {
-        font-size: 14px;
-      }
-      .sc-cart-totals .sc-total-row.sc-grand-total {
-        font-size: 17px;
+        width: 50px;
       }
       .sc-cart-actions {
-        gap: 8px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
       }
       .sc-cart-actions .btn {
-        padding: 10px 18px;
-        font-size: 13px;
-      }
-    }
-
-    /* ── Mobile (< 768 px) : cartes ── */
-    @media (max-width: 768px) {
-      .sc-cart-wrapper {
-        padding: 0 10px;
-      }
-      .sc-cart-wrapper h1 {
-        font-size: 22px;
-        margin-bottom: 20px;
-      }
-
-      /* tableau → carte */
-      .sc-cart-table,
-      .sc-cart-table tbody,
-      .sc-cart-table tr,
-      .sc-cart-table td {
-        display: block;
+        width: 100%;
+        text-align: center;
       }
       .sc-cart-table thead {
         display: none;
       }
       .sc-cart-table tr {
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 10px;
-        margin-bottom: 16px;
-        padding: 14px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        display: block;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
       }
       .sc-cart-table td {
         display: -webkit-box;
@@ -264,113 +224,13 @@
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
         border: none;
-        padding: 7px 0;
-        border-bottom: 1px solid #f2f2f2;
-        font-size: 13px;
-      }
-      .sc-cart-table td:last-child {
-        border-bottom: none;
+        padding: 6px 8px;
       }
       .sc-cart-table td::before {
         content: attr(data-label);
         font-weight: 600;
-        color: #888;
-        font-size: 12px;
-        -ms-flex-negative: 0;
-        flex-shrink: 0;
-        margin-right: 10px;
-      }
-
-      /* ligne Produit : image + nom fusionné */
-      .sc-cart-table td[data-label="Produkt"] {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -webkit-box-pack: start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        gap: 12px;
-        border-bottom: 1px solid #e8e8e8;
-        padding-bottom: 12px;
-        margin-bottom: 6px;
-      }
-      .sc-cart-table td[data-label="Produkt"]::before {
-        display: none;
-      }
-      .sc-cart-table td[data-label="Produkt"] .sc-prod-name {
-        font-size: 15px;
-      }
-      .sc-cart-table .sc-img {
-        width: 60px;
-      }
-      .sc-cart-table .sc-qty-input {
-        width: 50px;
-        padding: 5px 8px;
-        font-size: 14px;
-      }
-      .sc-cart-table td[data-label="Menge"] {
-        gap: 6px;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-      }
-      .sc-cart-table td[data-label="Menge"]::before {
-        -ms-flex-preferred-size: 100%;
-        flex-basis: 100%;
-      }
-      .sc-cart-table .sc-btn-update {
-        padding: 5px 12px;
-        font-size: 12px;
-      }
-      .sc-cart-table .sc-remove {
-        font-size: 20px;
-        padding: 4px 12px;
-      }
-
-      /* totaux */
-      .sc-cart-totals {
-        padding: 16px;
-        margin-bottom: 20px;
-      }
-      .sc-cart-totals .sc-total-row {
-        font-size: 14px;
-      }
-      .sc-cart-totals .sc-total-row.sc-grand-total {
-        font-size: 17px;
-      }
-
-      /* actions : 2 gros boutons */
-      .sc-cart-actions {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .sc-cart-actions > div {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .sc-cart-actions .btn {
-        width: 100%;
-        text-align: center;
-        padding: 14px 20px;
-        font-size: 15px;
-      }
-      .sc-btn-checkout {
-        -webkit-box-ordinal-group: 0;
-        -ms-flex-order: -1;
-        order: -1;
+        color: #666;
       }
     }
   </style>
@@ -534,7 +394,7 @@
             : '<div style="width:70px;height:70px;background:#eee;border-radius:3px;"></div>';
 
           html += '<tr data-id="' + id + '">';
-          html += '  <td data-label="Produkt">' + imageHtml + '</td>';
+          html += '  <td data-label="">' + imageHtml + '</td>';
           html += '  <td data-label="Bezeichnung"><span class="sc-prod-name">' + escapeHtml(item.name) + '</span></td>';
           html += '  <td data-label="Preis">' + formatPrice(item.price) + '</td>';
           html += '  <td data-label="Menge">' +
@@ -544,7 +404,7 @@
             '    </button>' +
             '  </td>';
           html += '  <td data-label="Gesamt" class="sc-line-total">' + formatPrice(lineTotal) + '</td>';
-          html += '  <td data-label="Aktion">' +
+          html += '  <td data-label="">' +
             '    <button class="sc-remove" data-id="' + id + '" title="Entfernen">&times;</button>' +
             '  </td>';
           html += '</tr>';
