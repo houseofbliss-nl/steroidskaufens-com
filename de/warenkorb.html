@@ -212,6 +212,23 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
     border-radius: 8px;
   }
 }
+
+/* ── Stepper + delete button on same row ── */
+.sc-right-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+@media (min-width: 769px) {
+  .sc-right-controls {
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  .sc-right-controls .sc-remove-item {
+    margin-left: auto;
+  }
+}
 </style>
 
 <link rel="preload" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -2511,24 +2528,15 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
       html += '      <div class="product-line-info product-price">' + formatPrice(item.price) + '</div>';
       html += '    </div>';
       html += '    <div class="product-line-grid-right col-md-6 col-xs-12">';
-      html += '      <div class="row">';
-      html += '        <div class="col-md-5 col-xs-12 qty">';
-      html += '          <div class="input-group bootstrap-touchspin">';
-      html += '            <div class="sc-qty-stepper">' +
-      '              <button class="sc-qty-btn sc-qty-plus" data-id="' + id + '" title="Erhöhen">+</button>' +
-      '              <span class="sc-qty-value">' + item.qty + '</span>' +
-      '              <button class="sc-qty-btn sc-qty-minus" data-id="' + id + '" title="Verringern">&ndash;</button>' +
-      '            </div>';
-      html += '          </div>';
-      html += '        </div>';
-      html += '        <div class="col-md-4 col-xs-6 product-price total-product-price">';
-      html += '          <span class="product-price">' + formatPrice(lineTotal) + '</span>';
-      html += '        </div>';
-      html += '        <div class="col-md-3 col-xs-6 text-xs-right">';
-      html += '          <button class="btn btn-outline-danger sc-remove-item" data-id="' + id + '" title="Entfernen">';
-      html += '            <i class="material-icons">delete</i>';
-      html += '          </button>';
-      html += '        </div>';
+      html += '      <div class="sc-right-controls">';
+      html += '        <div class="sc-qty-stepper">' +
+      '          <button class="sc-qty-btn sc-qty-plus" data-id="' + id + '" title="Erhöhen">+</button>' +
+      '          <span class="sc-qty-value">' + item.qty + '</span>' +
+      '          <button class="sc-qty-btn sc-qty-minus" data-id="' + id + '" title="Verringern">&ndash;</button>' +
+      '        </div>';
+      html += '        <button class="btn btn-outline-danger sc-remove-item" data-id="' + id + '" title="Entfernen">';
+      html += '          <i class="material-icons">delete</i>';
+      html += '        </button>';
       html += '      </div>';
       html += '    </div>';
       html += '  </div>';
