@@ -134,9 +134,8 @@
         var coverImg = document.querySelector('.product-cover img') || document.querySelector('.js-qv-product-cover');
         if (coverImg) image = coverImg.src;
 
-        // Product URL from canonical or current page
-        var canon = document.querySelector('link[rel="canonical"]');
-        url = (canon && canon.getAttribute('href')) || window.location.pathname;
+        // Product URL from current page
+        url = window.location.pathname;
       } else {
         // Category listing page — walk up to product container
         var container =
