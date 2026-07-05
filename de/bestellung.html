@@ -1518,7 +1518,6 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
               <div class="payment-option">
                 <label style="display:block;text-align:left;">
                   <span class="h6" style="margin-bottom:0;display:block;">
-                    <img src="../assets/img/crypto-icon.svg" alt="Krypto" style="height:22px;width:22px;vertical-align:middle;margin-right:6px;">
                     Kryptow&auml;hrung (BTC, USDT, ETH, XMR)
                   </span>
                   <small class="text-muted" style="display:block;margin-top:6px;">
@@ -2859,6 +2858,11 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   document.querySelectorAll('.sc-next-step').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var target = parseInt(this.getAttribute('data-target'));
+      // Block navigation if cart is empty
+      if (Cart.getCount() === 0) {
+        alert('Ihr Warenkorb ist leer. Bitte f&uuml;gen Sie Artikel hinzu.');
+        return;
+      }
       // Validate address step before proceeding
       if (target == 2) {
         // Use validation system
