@@ -74,8 +74,12 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
 
 <style>
 /* ── Delivery options responsive ── */
-.delivery-option {
-  padding: 15px;
+.delivery-option,
+.payment-option {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  margin-bottom: 12px;
 }
 .sc-delivery-label {
   cursor: pointer;
@@ -115,7 +119,8 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
 }
 /* Mobile/tablet: 2 rows, cards */
 @media (max-width: 992px) {
-  .delivery-option {
+  .delivery-option,
+  .payment-option {
     background: #fff;
     border: 1px solid #e8e8e8;
     border-radius: 10px;
@@ -1510,7 +1515,7 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
             <h2 class="step-title"><span class="step-number">3</span> Zahlungsmethode</h2>
 
             <div class="payment-options">
-              <div class="payment-option" style="padding:15px;margin-bottom:8px">
+              <div class="payment-option">
                 <span class="custom-radio">
                   <input type="radio" name="sc-payment" id="sc-payment-1" value="btc" checked>
                   <span></span>
