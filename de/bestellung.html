@@ -1516,11 +1516,7 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
 
             <div class="payment-options">
               <div class="payment-option">
-                <span class="custom-radio">
-                  <input type="radio" name="sc-payment" id="sc-payment-1" value="btc" checked>
-                  <span></span>
-                </span>
-                <label for="sc-payment-1" style="display:inline-block;vertical-align:middle;width:calc(100% - 40px);padding-left:10px;text-align:left;">
+                <label style="display:block;text-align:left;">
                   <span class="h6" style="margin-bottom:0;display:block;">
                     <img src="../assets/img/crypto-icon.svg" alt="Krypto" style="height:22px;width:22px;vertical-align:middle;margin-right:6px;">
                     Kryptow&auml;hrung (BTC, USDT, ETH, XMR)
@@ -1529,16 +1525,13 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
                     Zahlen Sie sicher und anonym mit Kryptow&auml;hrungen.
                     Sie erhalten die Wallet-Adresse nach der Bestellung.
                   </small>
-                  <span style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap;">
+                  <span style="display:inline-flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap;">
                     <img src="../assets/img/crypto-icon.svg" alt="BTC" style="height:20px;width:20px;border-radius:50%;border:1px solid #eee;padding:2px;" title="Bitcoin">
                     <span style="font-size:12px;font-weight:600;color:#666;">BTC</span>
-                    <span style="color:#ccc;">|</span>
                     <img src="../assets/img/usdt-icon.svg" alt="USDT" style="height:20px;width:20px;border-radius:50%;border:1px solid #eee;padding:2px;" title="Tether">
                     <span style="font-size:12px;font-weight:600;color:#666;">USDT</span>
-                    <span style="color:#ccc;">|</span>
                     <img src="../assets/img/eth-icon.svg" alt="ETH" style="height:20px;width:20px;border-radius:50%;border:1px solid #eee;padding:2px;" title="Ethereum">
                     <span style="font-size:12px;font-weight:600;color:#666;">ETH</span>
-                    <span style="color:#ccc;">|</span>
                     <img src="../assets/img/monero-icon.svg" alt="XMR" style="height:20px;width:20px;border-radius:50%;border:1px solid #eee;padding:2px;" title="Monero">
                     <span style="font-size:12px;font-weight:600;color:#666;">XMR</span>
                   </span>
@@ -2952,12 +2945,11 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
         deliveryEl.innerHTML = (deliveryLabel ? deliveryLabel.textContent.trim() : 'Versand') + ' — ' + (deliveryPrice ? deliveryPrice.textContent.trim() : '');
       }
 
-      // Payment summary
-      var paymentSelected = document.querySelector('input[name="sc-payment"]:checked');
+      // Payment summary (single crypto option, no radio)
       var paymentEl = document.getElementById('sc-confirm-payment-summary');
-      if (paymentEl && paymentSelected) {
-        var paymentText = paymentSelected.closest('.payment-option').querySelector('.h6');
-        paymentEl.textContent = paymentText ? paymentText.textContent.trim() : 'Zahlung ausgewählt';
+      if (paymentEl) {
+        var paymentText = document.querySelector('.payment-option .h6');
+        paymentEl.textContent = paymentText ? paymentText.textContent.trim() : 'Kryptowährung';
       }
 
       // Cart items
@@ -2994,29 +2986,24 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
 
           itemsEl.innerHTML = html;
 
-          // ── Trocador AnonPay widget for crypto payments ──
+          // ── Trocador AnonPay widget (crypto only) ──
           var trocadorContainer = document.getElementById('sc-trocador-container');
           if (trocadorContainer) {
-            var payMethod = document.querySelector('input[name="sc-payment"]:checked');
-            if (payMethod && payMethod.id === 'sc-payment-1') {
-              var totalFiat = (subtotal + shipping).toFixed(2);
-              var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
-              var trocadorSrc = 'https://trocador.app/de/anonpay/?' +
-                'ticker_to=xmr' +
-                '&network_to=Mainnet' +
-                '&address=' + encodeURIComponent(xmrAddr) +
-                '&amount=' + totalFiat +
-                '&fiat_equiv=EUR' +
-                '&name=' + encodeURIComponent('Steroidskaufen.com') +
-                '&description=' + encodeURIComponent('Bestellung') +
-                '&bgcolor=True' +
-                '&simple_mode=True' +
-                '&buttonbgcolor=2fb5d2';
-              document.getElementById('sc-trocador-iframe').src = trocadorSrc;
-              trocadorContainer.style.display = 'block';
-            } else {
-              trocadorContainer.style.display = 'none';
-            }
+            var totalFiat = (subtotal + shipping).toFixed(2);
+            var xmrAddr = '47uhYFpWzkqcN5Lrw8kaQW43sSgWEyWiXLRfN4dxAX4JbbXm6GANh5YjL8bvSYVnRxavHiN5F9LdtZpNMT6SvVmX37TpvXh';
+            var trocadorSrc = 'https://trocador.app/de/anonpay/?' +
+              'ticker_to=xmr' +
+              '&network_to=Mainnet' +
+              '&address=' + encodeURIComponent(xmrAddr) +
+              '&amount=' + totalFiat +
+              '&fiat_equiv=EUR' +
+              '&name=' + encodeURIComponent('Steroidskaufen.com') +
+              '&description=' + encodeURIComponent('Bestellung') +
+              '&bgcolor=True' +
+              '&simple_mode=True' +
+              '&buttonbgcolor=2fb5d2';
+            document.getElementById('sc-trocador-iframe').src = trocadorSrc;
+            trocadorContainer.style.display = 'block';
           }
         }
       }
