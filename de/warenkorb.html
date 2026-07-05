@@ -1486,11 +1486,6 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
     <div class="card-block cart-summary-totals">
 
 
-          <div class="cart-summary-line" id="sc-shipping-line-cart">
-        <span class="label shipping-label">Versand (DPD)</span>
-        <span class="value" id="sc-shipping-cart">17,00&nbsp;€</span>
-      </div>
-
           <div class="cart-summary-line cart-total">
         <span class="label">Gesamt&nbsp;(inkl. MwSt.)</span>
         <span class="value">0,00 €</span>
@@ -2507,8 +2502,6 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
         if (val) val.textContent = formatPrice(0);
       }
       if (totalEl) totalEl.textContent = formatPrice(0);
-      var shippingCartEl = document.getElementById('sc-shipping-cart');
-      if (shippingCartEl) shippingCartEl.textContent = formatPrice(0);
       // Restore body class & disable checkout
       document.body.classList.add('cart-empty');
       var chkBtn = document.querySelector('#sc-checkout-btn');
@@ -2575,12 +2568,9 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
       if (value) value.textContent = formatPrice(subtotal);
     }
 
-    // Update total (subtotal + 17 shipping, free over 150)
-    var shipping = subtotal >= 150 ? 0 : 17;
-    var total = subtotal + shipping;
+    // Update total (subtotal + 17 shipping)
+    var total = subtotal + 17;
     if (totalEl) totalEl.textContent = formatPrice(total);
-    var shippingCartEl = document.getElementById('sc-shipping-cart');
-    if (shippingCartEl) shippingCartEl.textContent = formatPrice(shipping);
 
     // Update the prestashop cart data
     if (window.prestashop && window.prestashop.cart) {
