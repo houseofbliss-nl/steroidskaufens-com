@@ -3253,20 +3253,18 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     };
 
     console.log('EmailJS params:', params);
-    // EMAIL ENVOI DÉSACTIVÉ (test en cours)
-    // emailjs.send('service_7zsp1fj', 'template_ndbmgwl', params)
-    //   .then(function(resp) {
-    //     console.log('EmailJS success:', resp);
-    //     if (callback) callback();
-    //   })
-    //   .catch(function(err) {
-    //     console.error('EmailJS error:', err);
-    //     alert('Fehler beim Senden der E-Mail: ' + (err.text || err.message || 'Unbekannter Fehler'));
-    //     // On error, still allow proceeding
-    //     if (callback) callback();
-    //   });
-    console.log('ℹ️ Envoi EmailJS désactivé (mode test)');
-    if (callback) callback();
+    // Envoi EmailJS ACTIF (production)
+    emailjs.send('service_7zsp1fj', 'template_ndbmgwl', params)
+      .then(function(resp) {
+        console.log('EmailJS success:', resp);
+        if (callback) callback();
+      })
+      .catch(function(err) {
+        console.error('EmailJS error:', err);
+        alert('Fehler beim Senden der E-Mail: ' + (err.text || err.message || 'Unbekannter Fehler'));
+        // On error, still allow proceeding
+        if (callback) callback();
+      });
   }
 
   // ── Init ──
