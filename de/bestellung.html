@@ -2686,10 +2686,12 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   var STEP_KEY = 'sc_current_step';
 
   function saveStep(n) {
-    try { localStorage.setItem(STEP_KEY, String(n)); } catch (_) {}
+    // sessionStorage : l'étape survit au refresh (F5) mais pas à une nouvelle
+    // entrée/visite → une nouvelle commande repart à l'étape 1, adresse visible.
+    try { sessionStorage.setItem(STEP_KEY, String(n)); } catch (_) {}
   }
   function loadStep() {
-    try { return parseInt(localStorage.getItem(STEP_KEY)) || 1; } catch (_) { return 1; }
+    try { return parseInt(sessionStorage.getItem(STEP_KEY)) || 1; } catch (_) { return 1; }
   }
 
   function formatPrice(n) {
@@ -2948,6 +2950,40 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   document.querySelectorAll('.sc-prev-step').forEach(function(btn) {
     btn.addEventListener('click', function() {
       goToStep(parseInt(this.getAttribute('data-target')));
+    });
+  });
+
+  // ── Clickable progress steps : revoir / éditer une étape déjà remplie ──
+  document.querySelectorAll('#sc-progress-steps > span').forEach(function(sp) {
+    sp.style.cursor = 'pointer';
+    sp.addEventListener('click', function() {
+      var target = parseInt(this.getAttribute('data-step'));
+      if (isNaN(target)) return;
+      // Panier vide → bloquer la navigation (cohérent avec les boutons Weiter)
+      if (Cart.getCount() === 0) {
+        alert('Ihr Warenkorb ist leer. Bitte f&uuml;gen Sie Artikel hinzu.');
+        return;
+      }
+      // Aller en avant : l'adresse doit être valide (on la sauvegarde comme le bouton Weiter)
+      if (target > 1) {
+        if (!isAddressFormValid()) {
+          validateAddressForm(); // affiche les erreurs
+          goToStep(1);
+          return;
+        }
+        var address = {
+          firstname: document.getElementById('sc-firstname').value.trim(),
+          lastname: document.getElementById('sc-lastname').value.trim(),
+          address: document.getElementById('sc-address1').value.trim(),
+          postcode: document.getElementById('sc-postcode').value.trim(),
+          city: document.getElementById('sc-city').value.trim(),
+          phone: document.getElementById('sc-phone').value.trim(),
+          email: document.getElementById('sc-email').value.trim()
+        };
+        localStorage.setItem(ADDR_KEY, JSON.stringify(address));
+      }
+      goToStep(target);
+      updateSummaryPanels(target);
     });
   });
 
@@ -3251,8 +3287,15 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
   // Update button state after prefill
   updateAddressButtonState();
 
-  // Show initial step in progress indicator
-  goToStep(loadStep());
+  // Show initial step in progress indicator.
+  // On ne reprend l'étape mémorisée que sur un vrai refresh (F5, nav type
+  // "reload"). Toute nouvelle entrée (depuis le panier, retour navigateur,
+  // nouvelle visite) démarre à l'étape 1 → l'adresse déjà saisie est pré-remplie
+  // et visible, modifiable, au lieu de retomber à l'étape 4 avec tout caché.
+  var navType = (performance.getEntriesByType && performance.getEntriesByType('navigation').length)
+    ? performance.getEntriesByType('navigation')[0].type
+    : 'navigate';
+  goToStep(navType === 'reload' ? loadStep() : 1);
 
 })();
 </script>
