@@ -1,20 +1,2 @@
 # Racine du domaine → home allemande
 / /de/ 301
-
-# Rewrites 200 villes (tâche 7) : /de/<ville>(/) sert la home (canonical injecté → /de/)
-/de/berlin*    /de/  200
-/de/hamburg*    /de/  200
-/de/muenchen*    /de/  200
-/de/koeln*    /de/  200
-/de/frankfurt-am-main*    /de/  200
-/de/stuttgart*    /de/  200
-/de/duesseldorf*    /de/  200
-/de/dortmund*    /de/  200
-/de/essen*    /de/  200
-/de/leipzig*    /de/  200
-/de/dresden*    /de/  200
-/de/hannover*    /de/  200
-/de/nuernberg*    /de/  200
-/de/bremen*    /de/  200
-/de/freiburg*    /de/  200
-/de/muenster*    /de/  200

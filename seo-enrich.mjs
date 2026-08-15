@@ -55,15 +55,6 @@ function seoCityInfo() {
     <p class="seo-city-info__text">Bestellen Sie bequem online in unserem Steroide-Shop – diskreter und schneller Versand in alle deutschen Großstädte, unter anderem ${names} und viele weitere Städte in ganz Deutschland.</p>
   </section>`;
 }
-function seoCityBlock() {
-  const lis = cities.map(c => `<li><a href="/de/${c.slug}/">${c.name}</a></li>`).join('\n        ');
-  return `<section class="seo-block seo-cities">
-    <h2 class="seo-block__title">Städte</h2>
-    <ul class="seo-block__list">
-        ${lis}
-    </ul>
-  </section>`;
-}
 function seoPopularBlock() {
   const lis = POPULAR.map(p => `<li><a href="${cleanUrl(p.url)}">${p.name}</a></li>`).join('\n        ');
   return `<section class="seo-block seo-popular">
@@ -211,7 +202,7 @@ function enrichFile(fp, relPath) {
 
   const headInj = nl + '  <!-- ' + MARKER + ' -->' + nl + '  ' + headBits.filter(Boolean).join(nl + '  ') + nl;
 
-  const bodyBits = [seoCityInfo(), seoCityBlock()];
+  const bodyBits = [seoCityInfo()];
   if (!isProduct) bodyBits.push(seoPopularBlock());
   if (isHome) bodyBits.push(seoFaqBlock());
 
