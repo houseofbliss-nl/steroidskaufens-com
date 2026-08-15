@@ -677,20 +677,23 @@
 }
 
 /* ─────── 17. BANNER CAROUSEL MOBILE — légende jamais coupée ─────── */
-/* Image native 1280x583 (ratio ~2.2) → à <=575px elle fait ~146-164px de haut.
-   Le centrage vertical (bottom: calc(50% - 1.5rem)) faisait déborder le titre
-   au-dessus de l'image : on réduit la taille du titre pour qu'il tienne
-   centré. On n'ancre plus en bas (rendu trop petit et éloigné). */
+/* Image native 1280x583 (ratio ~2.2) → à <=575px elle fait ~146-262px de haut.
+   On garde le haut du texte à ~18% (position actuelle), on laisse la police
+   grandir pour remplir l'espace en bas, et on centre le texte dans la bande. */
 @media (max-width: 575px) {
   .image-slider-block .carousel .carousel-item .caption {
-    top: auto;
-    bottom: calc(50% - 1.5rem);
-    left: 12px;
-    right: 12px;
+    top: 18%;
+    bottom: 6%;
+    left: 4%;
+    right: 4%;
     max-width: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
   .image-slider-block .carousel .carousel-item .caption .display-1 {
-    font-size: 1.2rem;
+    font-size: clamp(1.3rem, 7vw, 1.7rem);
     line-height: 1.3;
     margin-bottom: 0;
   }
