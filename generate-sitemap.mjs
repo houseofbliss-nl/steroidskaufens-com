@@ -60,5 +60,8 @@ const xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
 
 mkdirSync(OUT_DIR, { recursive: true });
 writeFileSync(OUT_FILE, xml, 'utf8');
-console.log(`Sitemap écrit : ${OUT_FILE}`);
+// Copie à la racine : le root de Cloudflare Pages = racine du repo (le site
+// entier vit à la racine, pas dans public/), donc /sitemap.xml doit être ici.
+writeFileSync(join(__dirname, 'sitemap.xml'), xml, 'utf8');
+console.log(`Sitemap écrit : ${OUT_FILE} + racine/sitemap.xml`);
 console.log(`URLs : ${files.length}`);
