@@ -675,4 +675,22 @@
   border-bottom: 1px dotted var(--sk-primary);
   text-decoration: none;
 }
-.sk-inline-lin
+
+/* ─────── 17. BANNER CAROUSEL MOBILE — légende jamais coupée ─────── */
+/* Image native 1280x583 (ratio ~2.2) → à <=575px elle fait ~164px de haut.
+   Le centrage vertical (bottom: calc(50% - 1.5rem)) faisait déborder le titre
+   au-dessus de l'image. On ancre la légende en bas et on réduit le titre. */
+@media (max-width: 575px) {
+  .image-slider-block .carousel .carousel-item .caption {
+    top: auto;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    max-width: none;
+  }
+  .image-slider-block .carousel .carousel-item .caption .display-1 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin-bottom: 0;
+  }
+}
