@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{name}}",
+  "image": [
+    "{{image}}"
+  ],
+  "description": "{{description}}",
+  "sku": "{{sku}}",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{brand}}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{{url}}",
+    "priceCurrency": "{{priceCurrency}}",
+    "price": "{{price}}",
+    "itemCondition": "http://schema.org/NewCondition",
+    "availability": "http://schema.org/InStock"
+  }
+}
