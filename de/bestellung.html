@@ -83,6 +83,111 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
 </style>
 
 <style>
+/* ── Boutons checkout : jamais coupés quand la traduction allonge le texte ── */
+.sc-next-step,
+.btn-primary.btn-block,
+.sc-prev-step {
+  white-space: normal;           /* autorise le retour à la ligne */
+  text-align: center;            /* texte centré si 2 lignes */
+  overflow: visible;             /* rien de caché */
+  height: auto;                  /* laisser le bouton grandir */
+  min-height: 44px;              /* zone cliquable confortable */
+  line-height: 1.3;
+  display: inline-block;
+}
+.sc-next-step {
+  float: none;                   /* centre au lieu de l'éclatement */
+  width: 100%;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .sc-next-step { width: auto; min-width: 260px; }
+}
+@media (max-width: 575px) {
+  .clearfix { text-align: center; }
+  .sc-prev-step { margin-bottom: 8px; }
+}
+
+/* ── Popup AGB : acceptation obligatoire avant paiement (déverrouille Trocador) ── */
+#sc-agb-modal.sc-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 100000;
+  background: rgba(26,26,46,.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.sc-overlay-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+  width: 100%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow: auto;
+  animation: sc-pop-in .22s ease-out;
+}
+@keyframes sc-pop-in {
+  from { transform: translateY(14px) scale(.97); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+.sc-overlay-head {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 20px 24px;
+  border-radius: 14px 14px 0 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.sc-overlay-head .sc-lock-ico { font-size: 28px; line-height: 1; }
+.sc-overlay-head h4 { margin: 0; font-size: 20px; font-weight: 700; }
+.sc-overlay-head p  { margin: 6px 0 0; font-size: 13px; color: #c9cbe0; }
+.sc-overlay-body { padding: 22px 24px; }
+.sc-overlay-body label.sc-agb-line {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 15px; line-height: 1.55;
+  text-align: left !important;
+  cursor: pointer;
+}
+.sc-overlay-body label.sc-agb-line input[type="checkbox"] {
+  width: 20px; height: 20px; margin: 2px 0 0;
+  flex-shrink: 0; cursor: pointer; accent-color: #27ae60;
+}
+.sc-overlay-body label.sc-agb-line a { color: #2fb5d2; text-decoration: underline; }
+.sc-overlay-foot { padding: 0 24px 24px; }
+.sc-overlay-foot .btn-agb-accept {
+  width: 100%;
+  display: block;
+  padding: 14px 18px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  background: #27ae60;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity .15s, transform .05s;
+}
+.sc-overlay-foot .btn-agb-accept:hover:not(:disabled) { opacity: .9; }
+.sc-overlay-foot .btn-agb-accept:active:not(:disabled) { transform: translateY(1px); }
+.sc-overlay-foot .btn-agb-accept:disabled { background: #b7c9bf; cursor: not-allowed; opacity: .7; }
+.sc-overlay-foot .sc-agb-later {
+  display: block;
+  margin: 12px auto 0;
+  background: none;
+  border: none;
+  color: #888;
+  text-decoration: underline;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+</style>
+
+<style>
 /* ── Delivery options responsive ── */
 .delivery-option,
 .payment-option {
@@ -274,7 +379,7 @@ section.page-content>ul.product-flags>li.product-flag{display:inline-block!impor
                 title="Anmelden zu Ihrem Kundenbereich"
                 rel="nofollow"
                 >
-                <i class="material-icons">&#xE7FF;</i>
+                <i class="material-icons" translate="no">&#xE7FF;</i>
                 <span class="hidden-sm-down">Anmelden</span>
             </a>
             </div>
@@ -2905,6 +3010,7 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
       }
       var _cont = document.getElementById('sc-trocador-container');
       if (_cont) _cont.style.display = 'none';
+      openAgbModal();
     }
     // Persist step so refresh returns here
     saveStep(n);
@@ -3147,6 +3253,61 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
     }
   });
 
+  // ── Popup AGB : acceptation des conditions obligatoire avant le paiement ──
+  // Le modal est placé APRÈS ce script dans le DOM → requêtes paresseuses.
+  var agbModal = null, agbCheck = null, agbAccept = null, agbLater = null, agbBound = false;
+
+  function _agbEls() {
+    if (!agbModal) agbModal = document.getElementById('sc-agb-modal');
+    if (!agbCheck) agbCheck = document.getElementById('sc-agb-check');
+    if (!agbAccept) agbAccept = document.getElementById('sc-agb-accept');
+    if (!agbLater) agbLater = document.getElementById('sc-agb-later');
+  }
+  function bindAgb() {
+    _agbEls();
+    if (agbBound || !agbCheck || !agbAccept) return;
+    agbBound = true;
+    agbCheck.addEventListener('change', function () {
+      agbAccept.disabled = !agbCheck.checked;
+    });
+    agbAccept.addEventListener('click', function () {
+      if (!agbCheck || !agbCheck.checked) return;
+      try { sessionStorage.setItem('sc_agb_accepted', '1'); } catch (_) {}
+      closeAgbModal();
+      var t = document.getElementById('sc-terms');
+      if (t) t.checked = true;
+      var o = document.getElementById('sc-place-order');
+      if (o) o.disabled = false;
+    });
+    if (agbLater) {
+      agbLater.addEventListener('click', function () {
+        if (agbCheck) agbCheck.checked = false;
+        if (agbAccept) agbAccept.disabled = true;
+        closeAgbModal();
+      });
+    }
+  }
+  function openAgbModal() {
+    bindAgb();
+    var step4 = document.getElementById('sc-step-4');
+    if (!agbModal || (step4 && step4.style.display === 'none')) return;
+    try { if (sessionStorage.getItem('sc_agb_accepted') === '1') return; } catch (_) {}
+    agbModal.style.display = 'flex';
+    if (document.body) document.body.style.overflow = 'hidden';
+    if (agbCheck) agbCheck.checked = false;
+    if (agbAccept) agbAccept.disabled = true;
+  }
+  function closeAgbModal() {
+    if (agbModal) agbModal.style.display = 'none';
+    if (document.body) document.body.style.overflow = '';
+  }
+  // Cas reload direct à l'étape 4 : ré-ouvrir une fois le DOM complet
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openAgbModal);
+  } else {
+    openAgbModal();
+  }
+
   // ── Terms checkbox enables "Jetzt bezahlen" button ──
   var termsCheck = document.getElementById('sc-terms');
   var orderBtn = document.getElementById('sc-place-order');
@@ -3310,6 +3471,31 @@ jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"widget
 })();
 </script>
     
+<!-- ═══════════ Popup AGB : gate le bouton "Jetzt bezahlen" (ouvre Trocador) ═══════════ -->
+<div id="sc-agb-modal" class="sc-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="sc-agb-title">
+  <div class="sc-overlay-card">
+    <div class="sc-overlay-head">
+      <div class="sc-lock-ico">&#x1F512;</div>
+      <div>
+        <h4 id="sc-agb-title">Bitte akzeptieren Sie unsere AGB</h4>
+        <p>Um die Bestellung abzuschlie&szlig;en, m&uuml;ssen Sie zuerst die folgenden Bedingungen akzeptieren.</p>
+      </div>
+    </div>
+    <div class="sc-overlay-body">
+      <label class="sc-agb-line">
+        <input type="checkbox" id="sc-agb-check" autocomplete="off">
+        <span>Ich habe die <a href="content/3-nutzungsbedingungen" target="_blank" rel="noopener">AGB</a> und die
+        <a href="content/1-lieferung" target="_blank" rel="noopener">Widerrufsbelehrung</a> zur Kenntnis genommen
+        und erkl&auml;re mich damit einverstanden.</span>
+      </label>
+    </div>
+    <div class="sc-overlay-foot">
+      <button class="btn-agb-accept" id="sc-agb-accept" type="button" disabled>Akzeptieren &amp; fortfahren</button>
+      <button class="sc-agb-later" id="sc-agb-later" type="button">Vielleicht sp&auml;ter</button>
+    </div>
+  </div>
+</div>
+
 <!-- generated by seo-enrich.mjs -->
 <section class="seo-city-info">
     <h2 class="seo-city-info__title">Wir liefern diskret in ganz Deutschland</h2>
