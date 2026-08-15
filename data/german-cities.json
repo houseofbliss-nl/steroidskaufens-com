@@ -1,0 +1,18 @@
+[
+  { "slug": "berlin", "name": "Berlin", "land": "Berlin", "postalCode": "10115" },
+  { "slug": "hamburg", "name": "Hamburg", "land": "Hamburg", "postalCode": "20095" },
+  { "slug": "muenchen", "name": "München", "land": "Bayern", "postalCode": "80331" },
+  { "slug": "koeln", "name": "Köln", "land": "Nordrhein-Westfalen", "postalCode": "50667" },
+  { "slug": "frankfurt-am-main", "name": "Frankfurt am Main", "land": "Hessen", "postalCode": "60311" },
+  { "slug": "stuttgart", "name": "Stuttgart", "land": "Baden-Württemberg", "postalCode": "70173" },
+  { "slug": "duesseldorf", "name": "Düsseldorf", "land": "Nordrhein-Westfalen", "postalCode": "40213" },
+  { "slug": "dortmund", "name": "Dortmund", "land": "Nordrhein-Westfalen", "postalCode": "44135" },
+  { "slug": "essen", "name": "Essen", "land": "Nordrhein-Westfalen", "postalCode": "45127" },
+  { "slug": "leipzig", "name": "Leipzig", "land": "Sachsen", "postalCode": "04109" },
+  { "slug": "dresden", "name": "Dresden", "land": "Sachsen", "postalCode": "01067" },
+  { "slug": "hannover", "name": "Hannover", "land": "Niedersachsen", "postalCode": "30159" },
+  { "slug": "nuernberg", "name": "Nürnberg", "land": "Bayern", "postalCode": "90402" },
+  { "slug": "bremen", "name": "Bremen", "land": "Bremen", "postalCode": "28195" },
+  { "slug": "freiburg", "name": "Freiburg im Breisgau", "land": "Baden-Württemberg", "postalCode": "79098" },
+  { "slug": "muenster", "name": "Münster", "land": "Nordrhein-Westfalen", "postalCode": "48143" }
+]

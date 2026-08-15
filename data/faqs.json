@@ -1,0 +1,34 @@
+[
+  {
+    "question": "Wie kann ich im Shop bestellen?",
+    "answer": "Legen Sie die gewünschten Produkte in den Warenkorb und gehen Sie zur Kasse. Dort geben Sie Ihre Lieferadresse ein, wählen die Versandart, bezahlen per Kryptowährung und erhalten nach der Bestellung eine Bestätigung per E-Mail."
+  },
+  {
+    "question": "Welche Zahlungsmethoden werden akzeptiert?",
+    "answer": "Wir akzeptieren ausschließlich Kryptowährungen über unseren Zahlungsanbieter Trocador – darunter USDT, BTC und XMR. Nach Abschluss der Zahlung wird Ihre Bestellung automatisch bestätigt."
+  },
+  {
+    "question": "Wie sind die Produkte verpackt und wie läuft der Versand ab?",
+    "answer": "Alle Bestellungen werden diskret und neutral verpackt, ohne Rückschlüsse auf den Inhalt. Der Versand erfolgt innerhalb Deutschlands und europaweit über unseren Versandpartner."
+  },
+  {
+    "question": "Wie lange dauert die Lieferung?",
+    "answer": "Die Lieferzeit hängt vom Versandziel und der gewählten Versandart ab. Nach dem Versand erhalten Sie die Bestätigung; die Lieferung erfolgt in der Regel innerhalb weniger Werktage."
+  },
+  {
+    "question": "Werden die Produkte qualitätsgeprüft?",
+    "answer": "Alle angebotenen Produkte durchlaufen eine strenge Qualitätskontrolle. Für jedes Produkt liegen unabhängige Laboranalysen und Analysezertifikate vor, die Sie einsehen können."
+  },
+  {
+    "question": "Wie werden meine Daten behandelt?",
+    "answer": "Ihre Liefer- und Kontaktdaten werden nur zur Bearbeitung der Bestellung verwendet, nicht an Dritte weitergegeben und nach Abschluss der Bestellung für eine begrenzte Zeit gelöscht."
+  },
+  {
+    "question": "Kann ich den Status meiner Bestellung verfolgen?",
+    "answer": "Sie erhalten nach der Bestellung eine Bestätigung per E-Mail. Bei Rückfragen zum Bestellstatus können Sie sich über die Kontaktseite an uns wenden."
+  },
+  {
+    "question": "Gibt es einen Rabatt oder Treueprogramm für Stammkunden?",
+    "answer": "Einmalige Angebote und besondere Konditionen für Stammkunden werden im Shop kommuniziert. Melden Sie sich im Kontaktformular, um weitere Informationen zu erhalten."
+  }
+]

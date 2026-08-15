@@ -16,7 +16,7 @@
     "url": "{{url}}",
     "priceCurrency": "{{priceCurrency}}",
     "price": "{{price}}",
-    "itemCondition": "http://schema.org/NewCondition",
-    "availability": "http://schema.org/InStock"
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock"
   }
 }
