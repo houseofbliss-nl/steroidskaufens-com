@@ -20,21 +20,79 @@ const CITIES = [
 ];
 const DOMAIN = 'https://steroidskaufen.dealsnows.com';
 
-// ─── Produits d'ancrage réels (nom + URL prod) ───
+// ─── Produits d'ancrage réels (nom, URL, id, image cover home_default, prix) ───
 const PRODUCTS = [
-  {name:'10 x Olimp Somatropin 100 IU',        url:'/de/wachstumshormone/544-10-x-olimp-somatropin-100-iu'},
-  {name:'2 x DepreStop EVO Meds + 1 GRATIS',   url:'/de/evo-meds/466-2-x-deprestop-evo-meds-1-free'},
-  {name:'2 x Endogenic Kisspeptin + 1 GRATIS', url:'/de/kisspeptin/465--2-x-endogenic-kisspeptin-1-free'},
-  {name:'2 x Olimp Somatropin 100 IU + 1 GRATIS', url:'/de/wachstumshormone/461-2-x-olimp-somatropin-100-iu-1-free'},
-  {name:'2 x Parabolan + 1 GRATIS',            url:'/de/injizierbare-steroide/456-2-x-parabolan-1-free'},
-  {name:'2 x Tiromel T3 + 1 GRATIS',           url:'/de/fatburner/462-2-x-tiromel-t3-1-free'},
-  {name:'3 x Retatrutide 4Mg Pen',             url:'/de/fatburner/550-3-x-retatrutide-4mg-pen'},
-  {name:'3 x Retatrutide 8Mg Pen',             url:'/de/fatburner/546-3-x-retatrutide-8mg-pen'},
-  {name:'3 x Sema G 2 MG',                     url:'/de/fatburner/548-3-x-sema-g-2-mg'},
-  {name:'3 x Sema+Cagri Pen 2 + 2 MG',         url:'/de/fatburner/549--3-x-semacagri-pen-2-2-mg'},
-  {name:'3 x Semaglutid 3 mg 30 tabs',         url:'/de/fatburner/551-3-x-semaglutid-3-mg-30-tabs'},
-  {name:'3 x Semaglutid 4 Mg',                 url:'/de/fatburner/545-3-x-semaglutid-4-mg'},
+  {name:'10 x Olimp Somatropin 100 IU',          url:'/de/wachstumshormone/544-10-x-olimp-somatropin-100-iu',        id:544, img:'727-home_default/10-x-olimp-somatropin-100-iu.jpg',         reg:'1.500,00 €', price:'750,00 €'},
+  {name:'2 x DepreStop EVO Meds + 1 GRATIS',     url:'/de/evo-meds/466-2-x-deprestop-evo-meds-1-free',                 id:466, img:'616-home_default/2-x-deprestop-evo-meds-1-free.jpg',          reg:'252,00 €',  price:'168,00 €'},
+  {name:'2 x Endogenic Kisspeptin + 1 GRATIS',   url:'/de/kisspeptin/465--2-x-endogenic-kisspeptin-1-free',             id:465, img:'617-home_default/-2-x-endogenic-kisspeptin-1-free.jpg',        reg:'135,00 €',  price:'90,00 €'},
+  {name:'2 x Olimp Somatropin 100 IU + 1 GRATIS',url:'/de/wachstumshormone/461-2-x-olimp-somatropin-100-iu-1-free',    id:461, img:'608-home_default/2-x-olimp-somatropin-100-iu-1-free.jpg',     reg:'',          price:'300,00 €'},
+  {name:'2 x Parabolan + 1 GRATIS',              url:'/de/injizierbare-steroide/456-2-x-parabolan-1-free',             id:456, img:'602-home_default/2-x-parabolan-1-free.jpg',                   reg:'264,00 €',  price:'176,00 €'},
+  {name:'2 x Tiromel T3 + 1 GRATIS',             url:'/de/fatburner/462-2-x-tiromel-t3-1-free',                        id:462, img:'609-home_default/2-x-tiromel-t3-1-free.jpg',                  reg:'99,00 €',   price:'66,00 €'},
+  {name:'3 x Retatrutide 4Mg Pen',               url:'/de/fatburner/550-3-x-retatrutide-4mg-pen',                      id:550, img:'734-home_default/3-x-retatrutide-4mg-pen.jpg',                reg:'435,00 €',  price:'304,50 €'},
+  {name:'3 x Retatrutide 8Mg Pen',               url:'/de/fatburner/546-3-x-retatrutide-8mg-pen',                      id:546, img:'729-home_default/3-x-retatrutide-8mg-pen.jpg',                reg:'837,00 €',  price:'585,90 €'},
+  {name:'3 x Sema G 2 MG',                       url:'/de/fatburner/548-3-x-sema-g-2-mg',                              id:548, img:'731-home_default/3-x-sema-g-2-mg.jpg',                       reg:'285,00 €',  price:'199,50 €'},
+  {name:'3 x Sema+Cagri Pen 2 + 2 MG',           url:'/de/fatburner/549--3-x-semacagri-pen-2-2-mg',                     id:549, img:'732-home_default/-3-x-semacagri-pen-2-2-mg.jpg',              reg:'417,00 €',  price:'291,90 €'},
+  {name:'3 x Semaglutid 3 mg 30 tabs',           url:'/de/fatburner/551-3-x-semaglutid-3-mg-30-tabs',                   id:551, img:'735-home_default/3-x-semaglutid-3-mg-30-tabs.jpg',            reg:'447,00 €',  price:'312,90 €'},
+  {name:'3 x Semaglutid 4 Mg',                   url:'/de/fatburner/545-3-x-semaglutid-4-mg',                          id:545, img:'728-home_default/3-x-semaglutid-4-mg.jpg',                   reg:'390,00 €',  price:'273,00 €'},
 ];
+const CART_TOKEN = '0747fab2ed4894ce88fb5a50be52c911';
+
+// ─── Carte produit carousel (réplicat homepage .product-item) ───
+function productCard(p){
+  const large = p.img.replace('-home_default/','-large_default/');
+  const reg = p.reg ? `                    <span class="regular-price">${p.reg}</span>\n` : '';
+  return `    <div class="product-item">
+        <article class="product-miniature js-product-miniature" data-id-product="${p.id}" data-id-product-attribute="0">
+            <div class="thumbnail-container">
+                <div class="product-image-block">
+                    <a href="${p.url}" class="thumbnail product-thumbnail">
+                        <img src="../${p.img}" alt="${p.name}" data-full-size-image-url="../${large}" width="350" height="415" loading="lazy" />
+                    </a>
+                    <ul class="product-flags">
+                    </ul>
+                    <div class="highlighted-informations no-variants hidden-sm-down">
+                        <div class="add">
+                            <form action="https://steroidskaufen.dealsnows.com/de/warenkorb" class="cart-form-url" method="post">
+                                <input type="hidden" name="token" class="cart-form-token" value="${CART_TOKEN}">
+                                <input type="hidden" value="${p.id}" name="id_product">
+                                <input type="hidden" class="input-group form-control" value="1" name="qty" />
+                                <button data-button-action="add-to-cart" class="btn btn-primary">
+                                    <span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                                    <span> In den Warenkorb</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-description">
+                    <span class="h3 product-title"><a href="${p.url}">${p.name}</a></span>
+                    <div class="product-price-and-shipping">
+                        <span class="sr-only">Preis</span>
+${reg}                        <span class="price">${p.price}</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>`;
+}
+
+// ─── Carousel 'Beliebte Produkte' (même wrapper que la homepage) ───
+function featuredCarousel(title, prods){
+  return `<section class="featured-products featured-product">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="title"><span>${title}</span></h2>
+        </div>
+        <div class="products-grid">
+            <div class="row">
+                <div class="products owl-theme owl-carousel featuredproduct-slider">
+${prods.map(productCard).join('\n')}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>`;
+}
 
 function rotateProducts(seed){
   // sélection de 8 produits, rotation selon l'index de la ville pour différencier
@@ -64,7 +122,6 @@ function buildCity(c, seed){
   const base = fs.readFileSync(BASE,'utf8');
   const url = DOMAIN + '/de/' + c.slug;
   const prods = rotateProducts(seed);
-  const prodsListHtml = prods.map(p=>`        <li><a href="${p.url}">${p.name}</a></li>`).join('\n');
   const townNames = CITIES.map(x=>x).filter(x=>x.slug!==c.slug);
   const landInNote = c.land !== c.name ? ` (${c.land})` : '';
 
@@ -99,12 +156,12 @@ function buildCity(c, seed){
                 </div>
 
                 <a class="stk-city__cta" href="/de/2-steroide">Zum kompletten Sortiment</a>
-                <p class="stk-city__note">Hinweis: Wir führen kein Ladengeschäft in ${c.name} – unser Service ist ein diskreter Online-Versandhandel für ganz ${c.land}.</p>
+                <p class="stk-city__note">Hinweis: Unser Service ist ein diskreter Online-Versandhandel für ganz ${c.land}.</p>
 
                 <h2>Beliebte Produkte in ${c.name}</h2>
-                <ul class="seo-block__list">
-${prodsListHtml}
-                </ul>
+                <div class="products owl-theme owl-carousel featuredproduct-slider">
+${prods.map(productCard).join('\n')}
+                </div>
 
                 <h2>Weitere Liefergebiete</h2>
                 <ul class="stk-city__cities">
@@ -186,15 +243,8 @@ ${prodsListHtml}
     <h2 class="seo-city-info__title">Wir liefern diskret in ${c.name} und in ganz ${c.land}</h2>
     <p class="seo-city-info__text">Bestellen Sie bequem online in unserem Steroide-Shop &ndash; diskreter und schneller Versand in ${c.name} und alle ${c.land}-Regionen wie ${CITIES.map(x=>x.name).join(', ')}.</p>
   </section>`;
-    // products list in tail (specific city selection)
-    const cityProducts = prods.map(p=>`        <li><a href="${p.url}">${p.name}</a></li>`).join('\n');
-    const tailProds = `<section class="seo-block seo-popular">
-    <h2 class="seo-block__title">Beliebte Produkte</h2>
-    <ul class="seo-block__list">
-${cityProducts}
-    </ul>
-  </section>`;
-    page = page.slice(0, tailIdx) + tailCity + '\n' + tailProds + '\n' + page.slice(bodyEnd);
+    // (le carousel 'Beliebte Produkte' en contenu central remplace l'ancien .seo-popular)
+    page = page.slice(0, tailIdx) + tailCity + '\n' + page.slice(bodyEnd);
   }
 
   // ── Écriture ──
