@@ -158,15 +158,24 @@ function buildCity(c, seed){
                 <a class="stk-city__cta" href="/de/2-steroide">Zum kompletten Sortiment</a>
                 <p class="stk-city__note">Hinweis: Unser Service ist ein diskreter Online-Versandhandel für ganz ${c.land}.</p>
 
-                <h2>Beliebte Produkte in ${c.name}</h2>
-                <div class="products owl-theme owl-carousel featuredproduct-slider">
-${prods.map(productCard).join('\n')}
-                </div>
-
                 <h2>Weitere Liefergebiete</h2>
                 <ul class="stk-city__cities">
                   ${townNames.map(t=>`<li><a href="/de/${t.slug}">Steroide kaufen in ${t.name}</a></li>`).join('\n                  ')}
                 </ul>
+              </div>
+            </section>
+            <section class="featured-products featured-product">
+              <div class="container">
+                <div class="section-title">
+                  <h2 class="title" id="city-products"><span>Beliebte Produkte in ${c.name}</span></h2>
+                </div>
+                <div class="products-grid">
+                  <div class="row">
+                    <div class="products owl-theme owl-carousel featuredproduct-slider">
+${prods.map(productCard).join('\n')}
+                    </div>
+                  </div>
+                </div>
               </div>
             </section>
           </section>
