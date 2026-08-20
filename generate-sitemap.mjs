@@ -32,7 +32,7 @@ function isRealPage(fp) {
 // (sinon Google les traite comme des pages distinctes auto-canonical = "page en
 // double sans canonical"). Détection : le fichier sans le suffixe hex existe déjà.
 const isHashDuplicate = (dir, rel, nameNoExt) => {
-  const m = /([0-9a-fA-F]{4,})$/.exec(nameNoExt);
+  const m = /([0-9a-fA-F]{4})$/.exec(nameNoExt);
   if (!m) return false;
   const base = nameNoExt.slice(0, nameNoExt.length - m[1].length) + '.html';
   // Duplicat UNIQUEMENT si une vraie page sans ce suffixe existe à côté.
