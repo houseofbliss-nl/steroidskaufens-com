@@ -1,3 +1,28 @@
 # Racine du domaine → home allemande
 /google25ebb8d7ce51a5bc.html /google25ebb8d7ce51a5bc.html 200
 / /de/ 301
+
+# Anciennes URLs villes (avant réécritures retirées) → pages villes réelles.
+# Sans ces 301, Google reçoit un 404 sur /de/<ville> (raison GSC "introuvable").
+/de/berlin /de/steroide-kaufen-berlin 301
+/de/hamburg /de/steroide-kaufen-hamburg 301
+/de/muenchen /de/steroide-kaufen-muenchen 301
+/de/koeln /de/steroide-kaufen-koeln 301
+/de/frankfurt-am-main /de/steroide-kaufen-frankfurt-am-main 301
+/de/stuttgart /de/steroide-kaufen-stuttgart 301
+/de/duesseldorf /de/steroide-kaufen-duesseldorf 301
+/de/dortmund /de/steroide-kaufen-dortmund 301
+/de/leipzig /de/steroide-kaufen-leipzig 301
+/de/hannover /de/steroide-kaufen-hannover 301
+# Villes sans page dédiée → redirection vers l'accueil allemande (ferme le 404)
+/de/essen /de/ 301
+/de/dresden /de/ 301
+/de/nuernberg /de/ 301
+/de/bremen /de/ 301
+/de/freiburg /de/ 301
+/de/muenster /de/ 301
+
+# Pages gzip corrompues (réponses 404 d'HTTrack servies en 200 comme HTML)
+# → redirection vers la vraie page catégorie, puis 200.
+/de/nandrolone-decanoate /de/24-nandrolone-decanoate 301
+/de/nandrolone-phenylpropionate /de/23-nandrolone-phenylpropionate 301

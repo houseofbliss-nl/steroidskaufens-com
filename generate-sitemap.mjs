@@ -5,7 +5,7 @@
  *
  * Usage : node generate-sitemap.mjs   →   write public/sitemap.xml
  */
-import { readFileSync, readdirSync, writeFileSync, statSync, mkdirSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync, statSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname, relative } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -16,12 +16,28 @@ const OUT_FILE = join(OUT_DIR, 'sitemap.xml');
 const BASE = 'https://steroidskaufen.dealsnows.com';
 
 // Fichiers à exclure : non-HTML (gzip 404, AJAX JSON…) — même garde que seo-enrich.mjs
+// + pages noindex (paniers warenkorb*) : elles ne doivent pas être soumises au
+// sitemap (une URL soumise + noindex = "Exclue par la balise noindex" dans GSC).
 function isRealPage(fp) {
   if (!fp.endsWith('.html')) return false;
   let h;
   try { h = readFileSync(fp, 'utf8'); } catch { return false; }
-  return /<!doctype html|<html/i.test(h) && /<\/head>/i.test(h);
+  if (!/<!doctype html|<html/i.test(h) || !/<\/head>/i.test(h)) return false;
+  if (/<meta\s+name="robots"\s+content="[^"]*noindex/i.test(h)) return false;
+  return true;
 }
+
+// Duplicats HTTrack (variantes d'URL à suffixe hexadécimal, ex. 10-orale-steroide4658.html) :
+// contenu identique à la page sans suffixe → à ne PAS soumettre au sitemap
+// (sinon Google les traite comme des pages distinctes auto-canonical = "page en
+// double sans canonical"). Détection : le fichier sans le suffixe hex existe déjà.
+const isHashDuplicate = (dir, rel, nameNoExt) => {
+  const m = /([0-9a-fA-F]{4,})$/.exec(nameNoExt);
+  if (!m) return false;
+  const base = nameNoExt.slice(0, nameNoExt.length - m[1].length) + '.html';
+  // Duplicat UNIQUEMENT si une vraie page sans ce suffixe existe à côté.
+  return existsSync(join(dir, base));
+};
 
 const files = [];
 function walk(dir) {
@@ -30,6 +46,7 @@ function walk(dir) {
     if (e.isDirectory()) { walk(fp); continue; }
     if (!isRealPage(fp)) continue;
     const rel = relative(DE_DIR, fp).replace(/\\/g, '/');
+    if (isHashDuplicate(dir, rel, e.name.replace(/\.html$/, ''))) continue;
     const lastmod = statSync(fp).mtime.toISOString().split('T')[0];
     let url;
     if (/\/?index\.html$/.test(rel)) {
