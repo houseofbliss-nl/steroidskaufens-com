@@ -6,3 +6,8 @@ desktop.ini
 # Logs et cache
 *.log
 node_modules/
+
+# GSC API
+client_secret_*.json
+gsc-token*.json
+

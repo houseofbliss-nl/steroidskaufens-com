@@ -1,0 +1,46 @@
+Pages avec impressions/clics (90 j) : 347
+
+   213  Fiches produit
+    79  URLs AVEC .html (doublon possible)
+    46  Articles blog
+     9  Autres (catégories/content/villes)
+
+======================================================================
+MODULES SENSIBLES vus par Google (impressions > 0) — DOUBLONS/CANONICAL ?
+======================================================================
+
+======================================================================
+TOP 25 PAGES toutes confondues
+======================================================================
+  imp=  303 clics= 11 pos=  9.7  /de/bromantan/256-bromantan-endogenic-60-kapseln
+  imp=  265 clics=  0 pos= 46.6  /de/102-winstrol-stanozolol-injektion
+  imp=  214 clics=  0 pos= 48.1  /de/23-nandrolone-phenylpropionate
+  imp=  204 clics= 15 pos=  7.3  /de/testosterone-cypionate/302-anubis-testosteron-cypionat-250-mg-10-ml.html
+  imp=  179 clics=  5 pos= 33.8  /de/oxandrolon/562-anubis-oxandrolone-10-mg-100-tab
+  imp=  102 clics=  0 pos= 54.4  /de/stanozolol/564-anubis-winstrol-10-mg-100-tab.html
+  imp=   99 clics=  0 pos= 59.9  /de/47-steroide-fuer-muskelmasse
+  imp=   95 clics=  3 pos= 27.2  /de/31-methenolone
+  imp=   93 clics=  0 pos= 37.9  /de/oxymetholon/561-anubis-anapolon-oxymetholone-25-mg-100-tab
+  imp=   82 clics= 11 pos=  6.5  /de/testosteron-enantat/303-anubis-testosteron-enanthat-250-mg-10-ml
+  imp=   77 clics=  1 pos= 34.5  /de/turinabol/560-anubis-turinabol-10-mg-100-tab
+  imp=   71 clics= 10 pos=  7.6  /de/96-anubis
+  imp=   71 clics=  0 pos= 48.2  /de/oxymetholon/286-ions-anapolon-25-mg
+  imp=   70 clics=  1 pos= 51.1  /de/nandrolone-decanoate/300-anubis-nandrolon-decanoate-250-mg-10-ml
+  imp=   67 clics=  3 pos= 35.1  /de/methandienone-dianabol/563-anubis-dianabol-10-mg-100-tab
+  imp=   65 clics=  0 pos= 39.5  /de/17-injizierbare-steroide4658
+  imp=   56 clics=  0 pos= 32.5  /de/ghrp-6/385-ghrp-6-bio-peptide-10mg
+  imp=   54 clics=  2 pos= 40.5  /de/drostanolone-propionate/295-anubis-masteron-propionate-100-mg-10-ml
+  imp=   53 clics=  0 pos= 65.7  /de/2-steroide89ae
+  imp=   52 clics=  0 pos= 52.0  /de/stanozolol/247-endogenic-winstrol-10mg-100-tabletten
+  imp=   52 clics=  0 pos= 48.1  /de/stanozolol/564-anubis-winstrol-10-mg-100-tab
+  imp=   50 clics=  0 pos= 38.2  /de/2-steroidefdb0.html?page=4
+  imp=   50 clics=  0 pos= 41.4  /de/oxymetholon/196-athletic-labs-anapolon-25-mg-100-tabletten.html
+  imp=   47 clics=  1 pos= 41.7  /de/drostanolone-propionate/479-propdrost-drostanolone-propionate
+  imp=   47 clics=  0 pos= 53.5  /de/60-dna-laboratory
+
+======================================================================
+DOUBLONS .html / sans (même page)
+======================================================================
+  total URLs .html dans le rapport : 79
+
+Terminé.

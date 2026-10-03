@@ -18,8 +18,14 @@ const BASE = 'https://steroidskaufen.dealsnows.com';
 // Fichiers à exclure : non-HTML (gzip 404, AJAX JSON…) — même garde que seo-enrich.mjs
 // + pages noindex (paniers warenkorb*) : elles ne doivent pas être soumises au
 // sitemap (une URL soumise + noindex = "Exclue par la balise noindex" dans GSC).
+// + modules obsolètes /auth|mon_rec|ver_rev|tops|tops_trend : résidus de l'ancien
+// site (capturés en soft-404 par le clone) — à ne JAMAIS soumettre au sitemap.
+const JUNK_SEGMENTS = ['auth', 'mon_rec', 'ver_rev', 'tops', 'tops_trend'];
 function isRealPage(fp) {
   if (!fp.endsWith('.html')) return false;
+  const rel = fp.replace(/\\/g, '/');
+  const parts = rel.split('/');
+  if (parts.slice(0, -1).some((p) => JUNK_SEGMENTS.includes(p))) return false;
   let h;
   try { h = readFileSync(fp, 'utf8'); } catch { return false; }
   if (!/<!doctype html|<html/i.test(h) || !/<\/head>/i.test(h)) return false;

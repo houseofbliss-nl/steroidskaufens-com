@@ -1,0 +1,799 @@
+Fichiers HTML : 999 | URLs sitemap : 932
+
+======================================================================
+A. PROBLÈMES DÉTECTÉS (fichiers concernés)
+======================================================================
+
+### module sensible (?auth/mon_rec/etc.)  (415)
+    de/adresse.html
+    de/adressen.html
+    de/arg-bpc-157/auth/silver.html
+    de/arg-bpc-157/mon_rec/gold.html
+    de/arg-bpc-157/tops/10-percent.html
+    de/arg-bpc-157/tops_trend/5-percent.html
+    de/arg-bpc-157/ver_rev/gold.html
+    de/auth/silver.html
+    de/blog/auth/silver.html
+    de/blog/category/1/auth/silver.html
+    de/blog/category/1/mon_rec/gold.html
+    de/blog/category/1/tops/10-percent.html
+    ... et 403 autres
+
+### meta desc < 70 (26)  (414)
+    de/index6a2f.html
+    de/arg-bpc-157/auth/silver.html
+    de/arg-bpc-157/mon_rec/gold.html
+    de/arg-bpc-157/tops/10-percent.html
+    de/arg-bpc-157/tops_trend/5-percent.html
+    de/arg-bpc-157/ver_rev/gold.html
+    de/auth/silver.html
+    de/blog/auth/silver.html
+    de/blog/category/1/auth/silver.html
+    de/blog/category/1/mon_rec/gold.html
+    de/blog/category/1/tops/10-percent.html
+    de/blog/category/1/tops_trend/5-percent.html
+    ... et 402 autres
+
+### H1 manquant  (34)
+    google25ebb8d7ce51a5bc.html
+    de/bestellbestatigung.html
+    de/blog.html
+    de/kontakt.html
+    de/blog/1.html
+    de/blog/2.html
+    de/blog/3.html
+    de/blog/4.html
+    de/blog/5.html
+    de/blog/6.html
+    de/blog/post/cardarine-erfahrungen-gw-501516.html
+    de/blog/post/cypionat-vs-enantat-was-ist-besser.html
+    ... et 22 autres
+
+### title > 62 chars (72)  (31)
+    de/16-clenbuterol.html
+    de/46-steroide-fuer-staerke4658.html
+    de/50-hgh-fragment.html
+    de/73-yk-11.html
+    de/76-fatburner4658.html
+    de/76-fatburner9ba9.html
+    de/88-testosteron-base.html
+    de/blog/post/die-besten-medikamente-zur-gewichtsreduktion-liste.html
+    de/blog/post/steroidzyklus-fuer-fortgeschrittene-90-tage.html
+    de/blog/post/wie-viel-clenbuterol-sollte-ich-einnehmen.html
+    de/boldenone-undecylenate/298-anubis-boldenone-undecylenate-250-mg-10-ml.html
+    de/boldenone-undecylenate/501-alpina-pharma-boldenon-250-mg-10-ml.html
+    ... et 19 autres
+
+### meta description manquante/vide  (30)
+    google25ebb8d7ce51a5bc.html
+    de/adresse.html
+    de/adressen.html
+    de/anmeldung.html
+    de/anmeldungca5f.html
+    de/anmeldungfd9a.html
+    de/auftragsverfolgung-gast.html
+    de/bestellbestatigung.html
+    de/bestellung.html
+    de/warenkorb-original.html
+    de/warenkorb.html
+    de/blog/popular.html
+    ... et 18 autres
+
+### title > 62 chars (77)  (29)
+    de/10-orale-steroide4658.html
+    de/15-oxymetholon.html
+    de/18-testosteron-propionat.html
+    de/25-boldenone-undecylenate.html
+    de/36-pct4658.html
+    de/44-steroide-zur-fettverbrennung.html
+    de/47-steroide-fuer-muskelmasse4658.html
+    de/47-steroide-fuer-muskelmasse9ba9.html
+    de/51-tb-500.html
+    de/54-ghrp-2.html
+    de/99-sets.html
+    de/adressen.html
+    ... et 17 autres
+
+### title > 62 chars (89)  (29)
+    de/blog.html
+    de/blog/1.html
+    de/blog/2.html
+    de/blog/3.html
+    de/blog/4.html
+    de/blog/5.html
+    de/blog/6.html
+    de/blog/post/cardarine-erfahrungen-gw-501516.html
+    de/blog/post/cypionat-vs-enantat-was-ist-besser.html
+    de/blog/post/dianabol-vs-testosteron-welches-steroid-ist-besser-fuer-den-muskelaufbau.html
+    de/blog/post/die-besten-sarms-fuer-anfaenger.html
+    de/blog/post/die-sichersten-sarms-die-sie-verwenden-koennen.html
+    ... et 17 autres
+
+### title > 62 chars (69)  (26)
+    de/17-injizierbare-steroide235c.html
+    de/17-injizierbare-steroide4658.html
+    de/17-injizierbare-steroide9ba9.html
+    de/17-injizierbare-steroideaf4d.html
+    de/17-injizierbare-steroidec575.html
+    de/17-injizierbare-steroidefdb0.html
+    de/17-injizierbare-steroidefdfa.html
+    de/23-nandrolone-phenylpropionate.html
+    de/38-wachstumshormone.html
+    de/49-ghrp-6-cjc-mix.html
+    de/52-ipamorelin.html
+    de/55-ghrp-6.html
+    ... et 14 autres
+
+### title > 62 chars (70)  (26)
+    de/21-testosterone-mix.html
+    de/26-dihydroboldenone-cypionate.html
+    de/34-peptide4658.html
+    de/34-peptide9ba9.html
+    de/34-peptideaf4d.html
+    de/34-peptidefdb0.html
+    de/64-endogenic.html
+    de/blog/post/ratatrutid-vs-tirzepatid.html
+    de/blog/post/strategien-fuer-nachhaltigen-muskelaufbau.html
+    de/cardarine-gw-501516/114-cardarine.html
+    de/content/2-rechtliche-informationen.html
+    de/deus-medical/233-deus-medical-raloxifen-60mgtabl-50-tabletten.html
+    ... et 14 autres
+
+### title > 62 chars (68)  (24)
+    de/19-testosteron-enantat.html
+    de/35-sarms4658.html
+    de/46-steroide-fuer-staerke.html
+    de/76-fatburner.html
+    de/93-bromantan.html
+    de/blog/category/fachberatung.html
+    de/blog/category/1/fachberatung.html
+    de/blog/category/2/fachberatung.html
+    de/blog/category/3/fachberatung.html
+    de/blog/category/4/fachberatung.html
+    de/blog/category/5/fachberatung.html
+    de/blog/category/6/fachberatung.html
+    ... et 12 autres
+
+### title > 62 chars (74)  (19)
+    de/24-nandrolone-decanoate.html
+    de/33-methandienone-injizierbare.html
+    de/64-endogenic4658.html
+    de/64-endogenic9ba9.html
+    de/65-cjc-1295-no-dac.html
+    de/69-peg-mgf.html
+    de/bestellbestatigung.html
+    de/blog/post/absetzen-post-cycle-therapy-was-ist-das.html
+    de/blog/post/mk-677-in-kombination-mit-anabolen-steroiden.html
+    de/deus-medical/102-oxandrolone.html
+    de/fatburner/430-swiss-pharma-sibutramine-25-mg-30-tab.html
+    de/libido/56-kamagra-jelly-.html
+    ... et 7 autres
+
+### title > 62 chars (73)  (18)
+    de/10-orale-steroide.html
+    de/13-turinabol.html
+    de/36-pct.html
+    de/38-wachstumshormone4658.html
+    de/47-steroide-fuer-muskelmasse.html
+    de/74-s4-andarine.html
+    de/94-nahrungsergaenzungsmittel-fuer-bodybuilder.html
+    de/blog/post/semaglutid-nebenwirkungen-vermeiden-dosierung-tipps-und-magenprobleme-gezielt-reduzieren.html
+    de/blog/post/wie-behandelt-man-sexuelle-funktionsstoerungen.html
+    de/cardarine-gw-501516/136-cardarine-gw-501516-mundtropfen.html
+    de/drostanolone-propionate/36-dna-labratory-masteron-10ml.html
+    de/libido/57-cialis.html
+    ... et 6 autres
+
+### title > 62 chars (71)  (18)
+    de/45-steroide-zum-fettabbau.html
+    de/75-s-23.html
+    de/blog/post/cardarine-in-kombination-mit-steroiden.html
+    de/cardarine-gw-501516/383-endogenic-cardarine-in-kapseln.html
+    de/cardarine-gw-501516/407-novus-labs-gw-0742-super-cardarine.html
+    de/ligandrol-lgd-4033/53-ligandrol-lgd-4033-60-tabletten.html
+    de/methenolone/293-anubis-methenolone-enanthate-100-mg-10-ml.html
+    de/ostarin/131-ostarine-mk-2866-mundtropfen.html
+    de/ostarin/54-ostarin-mk-2866-90-tabletten.html
+    de/rad-140/132-testolone-rad-140-mundtropfen.html
+    de/sets/524-alpina-hgh-1-x-testo-e-free.html
+    de/sr-9009-stenabolic/134-sr-9009-stenabolic-mundtropfen.html
+    ... et 6 autres
+
+### title > 62 chars (75)  (17)
+    de/102-winstrol-stanozolol-injektion.html
+    de/12-stanozolol.html
+    de/14-oxandrolon.html
+    de/45-steroide-zum-fettabbau4658.html
+    de/57-mindboost-semax-selank.html
+    de/66-cjc-1295-dac.html
+    de/70-semax.html
+    de/79-glutathion-tad-600.html
+    de/80-ghk-cu.html
+    de/82-oxytocin.html
+    de/content/1-lieferung.html
+    de/content/17-muskelmasse-fuer-anfaenger.html
+    ... et 5 autres
+
+### title > 62 chars (79)  (17)
+    de/29-trenbolone-acetate.html
+    de/37-libido.html
+    de/39-mk-677.html
+    de/40-rad-140.html
+    de/53-melanotan-2-mt-2.html
+    de/72-cardarine-gw-501516.html
+    de/blog/post/steroide-und-blutbild-welche-werte-wir-kontrollieren-muessen-und-wie-oft.html
+    de/blog/post/testosteron-in-tabletten-was-muessen-sie-wissen.html
+    de/blog/post/was-sind-steroide.html
+    de/boldenone-undecylenate/482-undebold-boldenone.html
+    de/content/category/3-muskelmasse.html
+    de/fatburner/514-helios-100mcg-clenbuterol-10mg-yohimbine-hcl.html
+    ... et 5 autres
+
+### title > 62 chars (91)  (16)
+    de/2-steroide1448.html
+    de/2-steroide1c8b.html
+    de/2-steroide3c09.html
+    de/2-steroide42a7.html
+    de/2-steroide5760.html
+    de/2-steroide5c43.html
+    de/2-steroide7537.html
+    de/2-steroide89ae.html
+    de/2-steroide8c93.html
+    de/2-steroide9683.html
+    de/2-steroidea7f1.html
+    de/2-steroidece37.html
+    ... et 4 autres
+
+### title > 62 chars (76)  (16)
+    de/20-testosterone-cypionate.html
+    de/27-drostanolone-propionate.html
+    de/28-drostanolone-enanthate.html
+    de/30-trenbolone-enanthate.html
+    de/41-ligandrol-lgd-4033.html
+    de/56-pt-141.html
+    de/58-igf-1-lr3.html
+    de/68-epithalon.html
+    de/blog/post/peptide-zur-muskelmasse-verwendung-dosierung-und-effekte.html
+    de/blog/post/retatrutid-2026-vom-labor-zum-staerksten-adipositas-medikament-der-klinischen-forschung.html
+    de/fatburner/153-tiromel-t3-100-tabletten-25mcgtab-.html
+    de/pct/59-exemestan.html
+    ... et 4 autres
+
+### title > 62 chars (81)  (15)
+    de/84-evo-meds.html
+    de/blog/post/cardarine-erfahrungen-test-bewertung-und-wirkung.html
+    de/blog/post/igf-1-kurze-beschreibung-dosierung-und-bewertung.html
+    de/blog/post/wie-mischt-dosiert-und-lagert-man-peptide-richtig.html
+    de/boldenone-undecylenate/177-global-pharma-boldenone-undecylenate-250mg-10-x-1ml.html
+    de/content/13-sicherer-zyklus-trockene-muskelmasse-fuer-anfaenger.html
+    de/drostanolone-enanthate/173-global-pharma-drostanolon-enanthate-200mg-10-x-1ml.html
+    de/drostanolone-propionate/172-global-pharma-drostanolon-propionat-100mg-10-x-1ml.html
+    de/drostanolone-propionate/435-ions-pharmacy-drostanolone-propionate-100-mg.html
+    de/nandrolone-phenylpropionate/174-global-pharma-nandrolone-phenylpropionate-100mg-10-x-1ml.html
+    de/sets/373-dein-erster-steroidzyklus-grosse-muskelmasse.html
+    de/sets/375-intermediaerer-steroidzyklus-riesige-masse-2.html
+    ... et 3 autres
+
+### title > 62 chars (64)  (14)
+    de/35-sarms.html
+    de/83-athletic-labs.html
+    de/89-testosteron4658.html
+    de/89-testosteron9ba9.html
+    de/adresse.html
+    de/drostanolone-propionate/81-core-labs-drostanolone-propionate-10ml.html
+    de/fatburner/470-semacagri-pen-2-2-mg.html
+    de/fatburner/549--3-x-semacagri-pen-2-2-mg.html
+    de/libido/58-cenforce-200.html
+    de/mk-677/406-novus-labs-mk-677.html
+    de/nandrolone-phenylpropionate/79-core-labs-nandrolon-propionat-10ml.html
+    de/pt-141/386-pt-141-10mg-bio-peptide.html
+    ... et 2 autres
+
+### title > 62 chars (78)  (13)
+    de/11-methandienone-dianabol.html
+    de/31-methenolone.html
+    de/42-ostarin.html
+    de/71-sr-9009-stenabolic.html
+    de/blog/post/welche-sarms-erfordern-eine-post-cycle-therapie.html
+    de/drostanolone-enanthate/474-enandrost-drostanolone-enantate.html
+    de/fatburner/240-5-amino-1mq-50mg-30-tabletten.html
+    de/nandrolone-decanoate/396-balkan-pharmaceuticals-decandrol.html
+    de/nandrolone-decanoate/439-ions-pharmacy-nandrolone-decanoate-200-mg.html
+    de/oxymetholon/521-alpina-pharma-oxymetholone-25-mg-100-tabs.html
+    de/testosteron-propionat/480-proptest-testosteron-propionat.html
+    de/testosterone-cypionate/472-cyptest-testosteron-cypionate.html
+    ... et 1 autres
+
+### title > 62 chars (90)  (13)
+    de/2-steroide0b08.html
+    de/2-steroide235c.html
+    de/2-steroide4658.html
+    de/2-steroide9ba9.html
+    de/2-steroideaf4d.html
+    de/2-steroidec575.html
+    de/2-steroidefdb0.html
+    de/2-steroidefdfa.html
+    de/blog/post/haarausfall-wie-kann-man-ihn-auf-natuerliche-weise-beheben.html
+    de/blog/post/wie-pct-die-nebenwirkungen-von-anabolen-steroiden-minimiert.html
+    de/content/14-fettabbau-und-muskelaufbau-fuer-anfaenger.html
+    de/fatburner/468-retatrutide-4mg-pen.html
+    ... et 1 autres
+
+### title > 62 chars (66)  (13)
+    de/34-peptide.html
+    de/48-bpc-157.html
+    de/60-dna-laboratory.html
+    de/78-global-pharma.html
+    de/blog/post/diaet-fuer-masse-grundregeln.html
+    de/blog/post/steroide-in-der-welt-des-kampfsports.html
+    de/boldenone-undecylenate/96-dna-laboratory-boldenon-10ml.html
+    de/evo-meds/212-fast-recovery-evo-meds.html
+    de/fatburner/381-yohimbin-endogenic-in-kapseln.html
+    de/ostarin/384-endogenic-ostarine-in-kapseln.html
+    de/pct/429-swiss-pharma-t3-25-mcg-30-tab.html
+    de/s4-andarine/141-andarine-mundtropfen.html
+    ... et 1 autres
+
+### title > 62 chars (67)  (13)
+    de/90-cortagen.html
+    de/blog/post/ostarine-in-kombination-mit-steroiden.html
+    de/blog/post/sichere-anabole-steroide-fuer-anfaenger.html
+    de/blog/post/vergleich-von-testosteron-cypionat-und-testosteron-enanthate.html
+    de/boldenone-undecylenate/436-ions-pharmacy-boldenone-200-mg.html
+    de/deus-medical/155-t4-thyromed-deus-medical.html
+    de/drostanolone-enanthate/294-anubis-masteron-enathate-200-mg-10-ml.html
+    de/fatburner/254-yohimbine-hcl-endogenic.html
+    de/fatburner/525-semaglutid-30-tabletten.html
+    de/hgh-fragment/418-swisschem-hgh-fragment-176-191.html
+    de/oxandrolon/249-endogenic-anavar-10mg-100-tabletten.html
+    de/trenbolone-acetate/203-athletic-labs-trenbolone-acetate-10ml.html
+    ... et 1 autres
+
+### title > 62 chars (65)  (10)
+    de/17-injizierbare-steroide.html
+    de/92-selank.html
+    de/blog/post/vergleich-von-trenbolone-acetate-und-enanthate-wirkung-dosierung.html
+    de/blog/post/wie-und-wo-kann-man-bitcoin-kaufen.html
+    de/bpc-157/403-novus-labs-bpc-157.html
+    de/evo-meds/214-selfcare-max-evo-meds.html
+    de/fatburner/512-tirzepatid-5mg-fertigpen.html
+    de/hgh-fragment/121-hgh-fragment-176-191.html
+    de/libido/55-cobra-120.html
+    de/wachstumshormone/544-10-x-olimp-somatropin-100-iu.html
+
+### title > 62 chars (80)  (10)
+    de/blog/post/wo-koennen-sie-steroide-in-ihren-koerper-injizieren.html
+    de/content/6-faq.html
+    de/drostanolone-enanthate/38-dna-laboratory-drostanolon-enantat-10ml.html
+    de/drostanolone-enanthate/434-ions-pharmacy-drostanolone-enanthate-200-mg.html
+    de/drostanolone-propionate/479-propdrost-drostanolone-propionate.html
+    de/methandienone-injizierbare/483-endogenic-d-bol-dianabol-injection.html
+    de/nandrolone-decanoate/202-athletic-labs-nandrolone-decanoate-10ml.html
+    de/semax/128-semax-endogenic.html
+    de/sets/372-dein-erster-steroidzyklus-kraft-trockene-muskelmasse.html
+    de/testosteron-enantat/441-ions-pharmacy-testosterone-enanthate-200-mg.html
+
+### title > 62 chars (92)  (9)
+    de/77-zubehoer.html
+    de/blog/latest.html
+    de/blog/latest/1.html
+    de/blog/latest/2.html
+    de/blog/latest/3.html
+    de/blog/latest/4.html
+    de/blog/latest/5.html
+    de/blog/latest/6.html
+    de/fatburner/566-retatrutide-10-mg.html
+
+### meta desc > 160 (300)  (8)
+    de/blog/post/bauch-oberschenkel-gezielt-schlanker-machen-wie-wir-hartnaeckiges-koerperfett-wirklich-loswerden.html
+    de/blog/post/nandrolon-propionat-vs-nandrolon-decanoat-was-ist-besser-fuer-unsere-ziele.html
+    de/blog/post/potenz-libido-funktion-so-schuetzen-wir-unser-bestes-stueck-waehrend-des-steroidzyklus.html
+    de/blog/post/rich-pianas-monster-massezyklus-der-ultimative-aufbauplan-fuer-maximale-muskelmasse-in-16-wochen.html
+    de/blog/post/schnell-abnehmen-bis-zum-sommer-unsere-effektivsten-strategien.html
+    de/blog/post/semaglutid-vs-retatrutid-welcher-wirkstoff-ist-besser-zum-abnehmen-geeignet.html
+    de/blog/post/warum-wir-keine-steroide-ueber-ebay-oder-amazon-kaufen-sollten.html
+    de/blog/post/winstrol-injektionen-vs-winstrol-tabletten-welche-form-ist-die-bessere-wahl-fuer-unseren-zyklus.html
+
+### title > 62 chars (63)  (8)
+    de/blog/post/ozempic-als-wirksames-schlankheitsmittel.html
+    de/blog/post/was-sind-die-sichersten-sarms.html
+    de/blog/post/wie-loest-man-peptide-auf-und-wie-berechnet-man-die-dosis.html
+    de/blog/post/wirkungen-von-ligandrol-lgd-4033-wirkung-meinungen-und-dosierung.html
+    de/drostanolone-propionate/39-aquila-drosta-p-10ml.html
+    de/mk-677/51-mk-677.html
+    de/pt-141/421-swisschem-pt-141.html
+    de/wachstumshormone/515-hgh-oxytropin-pen-60iu.html
+
+### title > 62 chars (82)  (6)
+    de/blog/post/bpc-157-warum-sollte-jeder-dieses-peptid-verwenden.html
+    de/blog/post/tirzepatide-und-ozempic-als-medikamente-zum-abnehmen.html
+    de/content/21-reviews.html
+    de/fatburner/568-semacagri-pen-4-4-mg.html
+    de/pct/61-clomid.html
+    de/steroide/478-phynylnandr-nandrolon-phenylprop.html
+
+### title > 62 chars (87)  (5)
+    de/87-hairbeard.html
+    de/blog/post/ozempic-auswirkungen-und-meinungen-zur-gewichtsabnahme.html
+    de/fatburner/567-retatrutide-20-mg.html
+    de/fatburner/570-tirzepatide-20-mg.html
+    de/wachstumshormone/573-anubis-somatropin-1-x-100-iu.html
+
+### title > 62 chars (84)  (4)
+    de/blog/post/beste-steroide-fuer-muskelaufbau-steroide-fuer-frauen.html
+    de/blog/post/testosteron-enanthate-dosierung-fuer-anfaenger-und-fortgeschrittene.html
+    de/content/8-abnehmen-t3-clenbuterol-maenner.html
+    de/methandienone-dianabol/395-balkan-pharmaceuticals-danabol.html
+
+### title > 62 chars (93)  (4)
+    de/blog/post/sarms-wirkung-wann-wie-schnell-und-wie-gross-sind-die-effekte.html
+    de/methandienone-dianabol/563-anubis-dianabol-10-mg-100-tab.html
+    de/stanozolol/564-anubis-winstrol-10-mg-100-tab.html
+    de/wachstumshormone/574-anubis-somatropin-10-x-10-iu.html
+
+### title manquant  (3)
+    google25ebb8d7ce51a5bc.html
+    de/module/ybc_blog/like.html
+    de/module/ybc_blog/report.html
+
+### canonical absent  (3)
+    google25ebb8d7ce51a5bc.html
+    de/module/ybc_blog/like.html
+    de/module/ybc_blog/report.html
+
+### title > 62 chars (83)  (3)
+    de/91-salbutamol.html
+    de/content/18-muskelmasse-fuer-fortgeschrittene-.html
+    de/wachstumshormone/572-medsomatrope.html
+
+### meta desc > 160 (163)  (3)
+    de/steroide-kaufen-dortmund.html
+    de/steroide-kaufen-stuttgart.html
+    de/blog/post/was-sind-die-sichersten-sarms.html
+
+### title > 62 chars (95)  (3)
+    de/blog/post/ghk-cu-kupferpeptid-fuer-anti-aging-heilung-und-hautregeneration.html
+    de/oxandrolon/562-anubis-oxandrolone-10-mg-100-tab.html
+    de/oxymetholon/561-anubis-anapolon-oxymetholone-25-mg-100-tab.html
+
+### title > 62 chars (105)  (3)
+    de/blog/post/winstrol-stanozolol-wirkung-dosierung-und-zyklen-fuer-den-cutting-erfolg.html
+    de/content/11-kraft-und-muskelmasse-fuer-fortgeschrittene.html
+    de/content/12-sicherer-zyklus-muskelmasse-fuer-anfaenger.html
+
+### contenu mince (<150 mots) (5)  (2)
+    google25ebb8d7ce51a5bc.html
+    de/module/ybc_blog/like.html
+
+### title > 62 chars (86)  (2)
+    de/2-steroide.html
+    de/content/category/2-abnehmen.html
+
+### title > 62 chars (88)  (2)
+    de/kontakt.html
+    de/fatburner/569-semaglutide-8-mg.html
+
+### title > 62 chars (94)  (2)
+    de/blog/post/schnell-abnehmen-bis-zum-sommer-unsere-effektivsten-strategien.html
+    de/turinabol/560-anubis-turinabol-10-mg-100-tab.html
+
+### title > 62 chars (99)  (2)
+    de/content/16-hardcore-insulin-hgh-trenbolone-testosteron.html
+    de/content/9-produkte-zum-abnehmen-beschreibung.html
+
+### meta desc > 160 (285)  (1)
+    de/index.html
+
+### canonical != url (https://steroidskaufen.dealsnows.com/de/ vs https://steroidskaufen.dealsnows.com/de/index)  (1)
+    de/index.html
+
+### meta desc < 70 (32)  (1)
+    de/kontakt.html
+
+### meta desc > 160 (167)  (1)
+    de/steroide-kaufen-duesseldorf.html
+
+### meta desc > 160 (168)  (1)
+    de/steroide-kaufen-frankfurt-am-main.html
+
+### meta desc < 70 (13)  (1)
+    de/warenkorb-custom.html
+
+### title > 62 chars (132)  (1)
+    de/blog/post/bauch-oberschenkel-gezielt-schlanker-machen-wie-wir-hartnaeckiges-koerperfett-wirklich-loswerden.html
+
+### meta desc > 160 (201)  (1)
+    de/blog/post/beste-sarms-fuer-anfaenger.html
+
+### meta desc > 160 (200)  (1)
+    de/blog/post/cardarine-erfahrungen-test-bewertung-und-wirkung.html
+
+### title > 62 chars (110)  (1)
+    de/blog/post/effektive-abnehminjektionen-mit-glp-1-analoga-zum-nachhaltigen-gewichtsverlust.html
+
+### meta desc > 160 (259)  (1)
+    de/blog/post/effektive-abnehminjektionen-mit-glp-1-analoga-zum-nachhaltigen-gewichtsverlust.html
+
+### meta desc > 160 (162)  (1)
+    de/blog/post/kagrilintid-beim-abnehmen.html
+
+### title > 62 chars (103)  (1)
+    de/blog/post/melanotan-2-pigmentierung-libido-und-richtige-anwendung-des-tan-peptids.html
+
+### meta desc > 160 (289)  (1)
+    de/blog/post/melanotan-2-pigmentierung-libido-und-richtige-anwendung-des-tan-peptids.html
+
+### title > 62 chars (107)  (1)
+    de/blog/post/nandrolon-propionat-vs-nandrolon-decanoat-was-ist-besser-fuer-unsere-ziele.html
+
+### meta desc > 160 (193)  (1)
+    de/blog/post/ostarine-in-kombination-mit-steroiden.html
+
+### title > 62 chars (122)  (1)
+    de/blog/post/potenz-libido-funktion-so-schuetzen-wir-unser-bestes-stueck-waehrend-des-steroidzyklus.html
+
+### meta desc > 160 (195)  (1)
+    de/blog/post/sarms-wirkung-wann-wie-schnell-und-wie-gross-sind-die-effekte.html
+
+### title > 62 chars (109)  (1)
+    de/blog/post/semaglutid-vs-retatrutid-welcher-wirkstoff-ist-besser-zum-abnehmen-geeignet.html
+
+### meta desc > 160 (171)  (1)
+    de/blog/post/strategien-fuer-nachhaltigen-muskelaufbau.html
+
+### title > 62 chars (101)  (1)
+    de/blog/post/tb-500-wirkung-dosierung-und-anwendungsprotokoll-fuer-maximale-heilung.html
+
+### meta desc > 160 (216)  (1)
+    de/blog/post/was-sind-steroide.html
+
+### meta desc > 160 (294)  (1)
+    de/blog/post/wie-pct-die-nebenwirkungen-von-anabolen-steroiden-minimiert.html
+
+### title > 62 chars (128)  (1)
+    de/blog/post/winstrol-injektionen-vs-winstrol-tabletten-welche-form-ist-die-bessere-wahl-fuer-unseren-zyklus.html
+
+### meta desc > 160 (226)  (1)
+    de/blog/post/winstrol-oder-anavar-was-ist-besser.html
+
+### meta desc > 160 (271)  (1)
+    de/blog/post/winstrol-stanozolol-wirkung-dosierung-und-zyklen-fuer-den-cutting-erfolg.html
+
+### title > 62 chars (97)  (1)
+    de/content/10-kraft-und-muskelmasse-fuer-anfaenger.html
+
+### title > 62 chars (98)  (1)
+    de/content/15-fettabbau-und-muskelaufbau-fuer-fortgeschrittene.html
+
+### meta desc < 70 (12)  (1)
+    de/content/2-rechtliche-informationen.html
+
+### title > 62 chars (85)  (1)
+    de/content/20-wie-fuehrt-man-eine-auslandsueberweisung-durch.html
+
+### H1 multiples (2)  (1)
+    de/fatburner/525-semaglutid-30-tabletten.html
+
+### contenu mince (<150 mots) (6)  (1)
+    de/module/ybc_blog/report.html
+
+======================================================================
+B. TITLES DUPLIQUÉS
+======================================================================
+[414x] Fehler 404 – Versand in ganz Deutschland
+       de/index6a2f.html
+       de/arg-bpc-157/auth/silver.html
+       de/arg-bpc-157/mon_rec/gold.html
+       de/arg-bpc-157/tops/10-percent.html
+       de/arg-bpc-157/tops_trend/5-percent.html
+       de/arg-bpc-157/ver_rev/gold.html
+[28x] Steroide Blog - Anabolika, PCT und Peptide | Steroidekaufen – Versand in ga
+       de/blog.html
+       de/blog/1.html
+       de/blog/2.html
+       de/blog/3.html
+       de/blog/4.html
+       de/blog/5.html
+[7x] Neueste Blog-Artikel - Steroide, PCT, Peptide | Steroidekaufen – Versand in
+       de/blog/latest.html
+       de/blog/latest/1.html
+       de/blog/latest/2.html
+       de/blog/latest/3.html
+       de/blog/latest/4.html
+       de/blog/latest/5.html
+[7x] Beliebte Beiträge – Versand in ganz Deutschland
+       de/blog/popular.html
+       de/blog/popular/1.html
+       de/blog/popular/2.html
+       de/blog/popular/3.html
+       de/blog/popular/4.html
+       de/blog/popular/5.html
+[7x] Fachberatung - Steroidekaufen.com Shop – Versand in ganz Deutschland
+       de/blog/category/fachberatung.html
+       de/blog/category/1/fachberatung.html
+       de/blog/category/2/fachberatung.html
+       de/blog/category/3/fachberatung.html
+       de/blog/category/4/fachberatung.html
+       de/blog/category/5/fachberatung.html
+[4x] Anmelden / Konto erstellen | Steroidekaufen.com – Versand in ganz Deutschla
+       de/adressen.html
+       de/anmeldung.html
+       de/anmeldungca5f.html
+       de/anmeldungfd9a.html
+[2x] Warenkorb – Versand in ganz Deutschland
+       de/warenkorb-original.html
+       de/warenkorb.html
+
+TOTAL pages en title dupliqué : 469
+
+======================================================================
+C. META DESCRIPTIONS DUPLIQUÉES (prefix de 80 chars)
+======================================================================
+[414x] Seite wurde nicht gefunden
+       de/index6a2f.html
+       de/arg-bpc-157/auth/silver.html
+       de/arg-bpc-157/mon_rec/gold.html
+       de/arg-bpc-157/tops/10-percent.html
+       de/arg-bpc-157/tops_trend/5-percent.html
+[28x] Unser Blog über Anabolika, Steroid-Zyklen, PCT und Peptide. Aktuelle Artikel, Do
+       de/blog.html
+       de/blog/1.html
+       de/blog/2.html
+       de/blog/3.html
+       de/blog/4.html
+[23x] Steroide kaufen bei Steroidekaufen.com – Anabolika, Testosteron und Wachstumshor
+       de/2-steroide.html
+       de/2-steroide0b08.html
+       de/2-steroide1448.html
+       de/2-steroide1c8b.html
+       de/2-steroide235c.html
+[9x] Anabolika von renommierten Labs kaufen bei Steroidekaufen.com – große Auswahl an
+       de/85-labs.html
+       de/85-labs0b08.html
+       de/85-labs235c.html
+       de/85-labs4658.html
+       de/85-labs9ba9.html
+[8x] Injizierbare steroide kaufen online in Deutschland. Bei uns können Sie die beste
+       de/17-injizierbare-steroide.html
+       de/17-injizierbare-steroide235c.html
+       de/17-injizierbare-steroide4658.html
+       de/17-injizierbare-steroide9ba9.html
+       de/17-injizierbare-steroideaf4d.html
+[7x] Neueste Blog-Artikel - Steroid-Zyklen, PCT &amp; Peptide | Steroidekaufen
+       de/blog/latest.html
+       de/blog/latest/1.html
+       de/blog/latest/2.html
+       de/blog/latest/3.html
+       de/blog/latest/4.html
+[5x] Peptide kaufen online in Deutschland. Bei uns können Sie die besten Qualitätspro
+       de/34-peptide.html
+       de/34-peptide4658.html
+       de/34-peptide9ba9.html
+       de/34-peptideaf4d.html
+       de/34-peptidefdb0.html
+[4x] Produkte nach Bestimmung bei Steroidekaufen.com – Muskelaufbau, Fettverbrennung,
+       de/43-bestimmung.html
+       de/43-bestimmung4658.html
+       de/43-bestimmung9ba9.html
+       de/43-bestimmungfdb0.html
+[3x] In Steroidekaufen.com Shop können Sie Steroide für Muskelmasse ohne Rezept siche
+       de/47-steroide-fuer-muskelmasse.html
+       de/47-steroide-fuer-muskelmasse4658.html
+       de/47-steroide-fuer-muskelmasse9ba9.html
+[3x] Endogene Hormone kaufen bei Steroidekaufen.com – Peptide, Wachstumshormone und m
+       de/64-endogenic.html
+       de/64-endogenic4658.html
+       de/64-endogenic9ba9.html
+[3x] Fatburner zum Abnehmen kaufen online ohne Rezept. Bei uns können Sie die besten 
+       de/76-fatburner.html
+       de/76-fatburner4658.html
+       de/76-fatburner9ba9.html
+[3x] Testosteron kaufen ohne Rezept. Bei uns können Sie die besten Qualitätsprodukte 
+       de/89-testosteron.html
+       de/89-testosteron4658.html
+       de/89-testosteron9ba9.html
+[2x] Orale Steroide kaufen online in Deutschland. Bei uns können Sie die besten Quali
+       de/10-orale-steroide.html
+       de/10-orale-steroide4658.html
+[2x] SARMS kaufen online in Deutschland. Bei uns können Sie die besten Qualitätsprodu
+       de/35-sarms.html
+       de/35-sarms4658.html
+[2x] PCT-Produkte für die Post-Cycle-Therapie kaufen bei Steroidekaufen.com – Clomife
+       de/36-pct.html
+       de/36-pct4658.html
+[2x] Wachstumshormone (HGH) kaufen ohne Rezept in Deutschland. Bei uns können Sie die
+       de/38-wachstumshormone.html
+       de/38-wachstumshormone4658.html
+[2x] In Steroidekaufen.com Shop können Sie Steroide zum Fettabbau ohne Rezept sicher,
+       de/45-steroide-zum-fettabbau.html
+       de/45-steroide-zum-fettabbau4658.html
+[2x] In Steroidekaufen.com Shop können Sie Steroide für Stärke ohne Rezept sicher, sc
+       de/46-steroide-fuer-staerke.html
+       de/46-steroide-fuer-staerke4658.html
+
+TOTAL pages en meta desc dupliquée : 522
+
+======================================================================
+D. HORS SITEMAP
+======================================================================
+
+Fichiers HTML pas dans le sitemap : 67
+    de/10-orale-steroide4658.html
+    de/17-injizierbare-steroide235c.html
+    de/17-injizierbare-steroide4658.html
+    de/17-injizierbare-steroide9ba9.html
+    de/17-injizierbare-steroideaf4d.html
+    de/17-injizierbare-steroidec575.html
+    de/17-injizierbare-steroidefdb0.html
+    de/17-injizierbare-steroidefdfa.html
+    de/2-steroide0b08.html
+    de/2-steroide1448.html
+    de/2-steroide1c8b.html
+    de/2-steroide235c.html
+    de/2-steroide3c09.html
+    de/2-steroide42a7.html
+    de/2-steroide4658.html
+    de/2-steroide5760.html
+    de/2-steroide5c43.html
+    de/2-steroide7537.html
+    de/2-steroide89ae.html
+    de/2-steroide8c93.html
+    de/2-steroide9683.html
+    de/2-steroide9ba9.html
+    de/2-steroidea7f1.html
+    de/2-steroideaf4d.html
+    de/2-steroidec575.html
+    de/2-steroidece37.html
+    de/2-steroidee4a7.html
+    de/2-steroidef62c.html
+    de/2-steroidefdb0.html
+    de/2-steroidefdfa.html
+    de/34-peptide4658.html
+    de/34-peptide9ba9.html
+    de/34-peptideaf4d.html
+    de/34-peptidefdb0.html
+    de/35-sarms4658.html
+    de/36-pct4658.html
+    de/38-wachstumshormone4658.html
+    de/43-bestimmung4658.html
+    de/43-bestimmung9ba9.html
+    de/43-bestimmungfdb0.html
+    ... et 27 autres
+
+======================================================================
+E. NOINDEX / ROBOTS META trouvés
+======================================================================
+    de/index6a2f.html
+    de/warenkorb-custom.html
+    de/warenkorb-original.html
+    de/warenkorb.html
+
+TOTAL fichiers avec meta robots contenant noindex : 4
+
+======================================================================
+F. IMAGES SANS ALT -> premières
+======================================================================
+    de/10-orale-steroide.html
+    de/10-orale-steroide4658.html
+    de/100-parabolan.html
+    de/101-testogel.html
+    de/102-winstrol-stanozolol-injektion.html
+    de/11-methandienone-dianabol.html
+    de/12-stanozolol.html
+    de/13-turinabol.html
+    de/14-oxandrolon.html
+    de/15-oxymetholon.html
+    de/16-clenbuterol.html
+    de/17-injizierbare-steroide.html
+    de/17-injizierbare-steroide235c.html
+    de/17-injizierbare-steroide4658.html
+    de/17-injizierbare-steroide9ba9.html
+    de/17-injizierbare-steroideaf4d.html
+    de/17-injizierbare-steroidec575.html
+    de/17-injizierbare-steroidefdb0.html
+    de/17-injizierbare-steroidefdfa.html
+    de/18-testosteron-propionat.html
+
+TOTAL fichiers avec au moins une img sans alt : 296
+
+Fin de l'audit.
